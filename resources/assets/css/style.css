@@ -118,6 +118,11 @@ h5 a{
 h5 a:hover{
  color: #ffc107;
 }
+
+#collapseOne, #collapseTwo, #collapseThree, #collapseFour, #collapse2One, #collapse2Two, #collapse2Three, #collapse2Four {
+  margin: 2%;
+}
+
 /* ========================================================================== */
 
 @media all and (max-width: 995px)

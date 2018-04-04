@@ -2,14 +2,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('front_index');
-Route::get('categories', 'HomeController@categories')->name('front_categories');
-Route::get('parametres', 'HomeController@parametres')->name('front_parametres');
+Route::get('/', 'HomeController@home')->name('front_accueil');
+Route::get('index', 'HomeController@index')->name('front_categories');
+Route::get('settings', 'HomeController@settings')->name('front_settings');
 Route::get('profil', 'HomeController@profil')->name('front_profil');
+Route::get('home', 'HomeController@home')->name('front_accueil');
+Route::get('members', 'HomeController@members')->name('front_membres');
 
-/*Route::get('/profil/{id}', 'HomeController@index')->name('profil');
-
-Route::get('/parametres/{id}', 'HomeController@index')->name('parametres');
+/*
 
 Route::get('/messageries/{id}', 'HomeController@index')->name('messageries');
 

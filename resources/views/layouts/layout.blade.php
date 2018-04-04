@@ -96,10 +96,10 @@
 
         <!-- =============================BANNER========================================== -->
         <div class="container clear" id="cont_entete_profil">
-            <img class="img-fluid" src="{{URL::asset('img/banner_hs.png')}}" alt="banniere">
+            <img class="img-fluid" src="img/banner_hs.png" alt="banniere">
             <!-- =============================NAV-BAR========================================== -->
             <nav class="navbar navbar-expand-lg navbar-light" id="navbar_profil">
-                <a class="navbar-brand" href="accueil.php">Accueil</a>
+                <a class="navbar-brand" href="home">Accueil</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -107,16 +107,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="categories.blade.php">Catégories</a>
+                            <a class="navbar-brand" href="index">Catégories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="membres.blade.php">Membres</a>
+                            <a class="navbar-brand" href="members">Membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="profil.blade.php">Profil</a>
+                            <a class="navbar-brand" href="profil">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="parametres.blade.php">Préférences</a>
+                            <a class="navbar-brand" href="settings">Paramètres</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
