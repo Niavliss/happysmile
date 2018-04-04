@@ -5,7 +5,7 @@
 @section('content')
     <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
-        <img class="img-fluid" src="{{URL::asset('img/Visiteur.png')}}">
+        <img class="img-fluid" src="{{URL::asset('img/user_logo.png')}}">
         <h2>Pseudo</h2>
         <ul>
             <li><button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_publier">Publier</button>
