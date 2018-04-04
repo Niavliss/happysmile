@@ -51,7 +51,7 @@
             </div>
             <div class="col-3">
                 <div class="card pic">
-                    <img class="card-img-top" src="images/bimage1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{URL::asset('img/bimage1.jpg')}}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">Quand le commercial m'invite à venir jeter un oeil aux nouvelles specs.</p>
                     </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="col-3">
                 <div class="card pic">
-                    <img class="card-img-top" src="images/bimage4.gif" alt="Card image cap">
+                    <img class="card-img-top" src="{{URL::asset('img/bimage4.gif')}}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">Quand un client vient au bureau le vendredi et demande la mise en prod de son site.</p>
                     </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-3">
                 <div class="card pic">
-                    <img class="card-img-top" src="images/bimage2.gif" alt="Card image cap">
+                    <img class="card-img-top" src="{{URL::asset('img/bimage2.gif')}}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">Quand le chef me cherche pour une démo client.</p>
                     </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-3">
                 <div class="card pic">
-                    <img class="card-img-top" src="images/bimage3.gif" alt="Card image cap">
+                    <img class="card-img-top" src="{{URL::asset('img/bimage3.gif')}}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">Vendredi, 17h.</p>
                     </div>
