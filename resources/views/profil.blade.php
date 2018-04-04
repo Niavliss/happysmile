@@ -3,8 +3,7 @@
 @section('title', 'Profil')
 
 @section('content')
-    <div class="text-center" id="cont_fiche_profil">
-    </div>
+    <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
         <img class="img-fluid" src="{{URL::asset('img/Visiteur.png')}}">
         <h2>Pseudo</h2>
@@ -44,7 +43,7 @@
                         <p class="card-text">Vous pourrez prochainement publier des articles dans cette section une fois votre compte créé et connecté.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    <img class="card-img-bottom" src="{{URL::asset('images/banner_hs.png')}}" alt="banner_image">
+                    <img class="card-img-bottom" src="{{URL::asset('img/banner_hs.png')}}" alt="banner_image">
                 </div>
             </div>
             <div class="col-12 status">
