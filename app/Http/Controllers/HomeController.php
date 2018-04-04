@@ -25,9 +25,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-
-
     /**
      * Show the application dashboard.
      *
@@ -36,6 +33,11 @@ class HomeController extends Controller
     public function categories()
     {
         return view('categories');
+    }
+
+    public function profil()
+    {
+        return view('profil');
     }
 
     public function parametres()
