@@ -116,7 +116,7 @@
                             <a class="navbar-brand" href="profil.blade.php">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="parametres.blade.php">Préférences</a>
+                            <a class="navbar-brand" href="parametres.blade.php">Paramètres</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">

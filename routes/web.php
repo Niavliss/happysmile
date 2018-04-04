@@ -7,9 +7,7 @@ Route::get('categories', 'HomeController@categories')->name('front_categories');
 Route::get('parametres', 'HomeController@parametres')->name('front_parametres');
 Route::get('profil', 'HomeController@profil')->name('front_profil');
 
-/*Route::get('/profil/{id}', 'HomeController@index')->name('profil');
-
-Route::get('/parametres/{id}', 'HomeController@index')->name('parametres');
+/*
 
 Route::get('/messageries/{id}', 'HomeController@index')->name('messageries');
 
