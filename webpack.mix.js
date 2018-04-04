@@ -28,3 +28,5 @@ mix.styles([
     'resources/assets/css/flatpickr.min.css',
     'resources/assets/css/style.css'
 ],'public/css/all.css');
+
+mix.copyDirectory('resources/assets/img', 'public/img');

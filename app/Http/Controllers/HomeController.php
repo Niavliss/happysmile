@@ -38,5 +38,9 @@ class HomeController extends Controller
         return view('categories');
     }
 
+    public function parametres()
+    {
+        return view('parametres');
+    }
 
 }

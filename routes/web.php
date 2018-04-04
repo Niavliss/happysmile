@@ -4,6 +4,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('front_index');
 Route::get('categories', 'HomeController@categories')->name('front_categories');
+Route::get('parametres', 'HomeController@parametres')->name('front_parametres');
 
 /*Route::get('/profil/{id}', 'HomeController@index')->name('profil');
 
