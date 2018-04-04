@@ -40,9 +40,18 @@ class HomeController extends Controller
         return view('profil');
     }
 
-    public function parametres()
+    public function settings()
     {
-        return view('parametres');
+        return view('settings');
     }
 
+    public function home()
+    {
+        return view('home');
+    }
+
+    public function members()
+    {
+        return view('members');
+    }
 }
