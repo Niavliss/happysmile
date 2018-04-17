@@ -107,7 +107,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="index">Catégories</a>
+                            <a class="navbar-brand" href="categories">Catégories</a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="members">Membres</a>

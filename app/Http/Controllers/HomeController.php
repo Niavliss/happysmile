@@ -26,19 +26,8 @@ class HomeController extends Controller
         return view('index');
     }
 
-
-    public function settings()
-    {
-        return view('settings');
-    }
-
     public function home()
     {
         return view('home');
-    }
-
-    public function members()
-    {
-        return view('members');
     }
 }
