@@ -4,8 +4,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@home')->name('front_accueil');
 Route::get('index', 'HomeController@index')->name('front_categories');
-Route::get('settings', 'HomeController@settings')->name('front_settings');
-Route::get('profil', 'HomeController@profil')->name('front_profil');
+Route::get('settings', 'SettingsController@settings')->name('front_settings');
+Route::get('profile', 'ProfileController@profile')->name('front_profile');
 Route::get('home', 'HomeController@home')->name('front_accueil');
 Route::get('members', 'HomeController@members')->name('front_membres');
 

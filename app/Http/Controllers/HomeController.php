@@ -25,20 +25,7 @@ class HomeController extends Controller
     {
         return view('index');
     }
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function categories()
-    {
-        return view('categories');
-    }
 
-    public function profil()
-    {
-        return view('profil');
-    }
 
     public function settings()
     {

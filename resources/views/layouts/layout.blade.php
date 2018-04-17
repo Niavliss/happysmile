@@ -113,7 +113,7 @@
                             <a class="navbar-brand" href="members">Membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="profil">Profil</a>
+                            <a class="navbar-brand" href="profile">Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="settings">Paramètres</a>
