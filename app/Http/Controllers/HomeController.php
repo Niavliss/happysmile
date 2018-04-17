@@ -49,9 +49,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function members()
-    {
-        return view('members');
-    }
 }
