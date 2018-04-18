@@ -99,7 +99,7 @@
             <img class="img-fluid" src="img/banner_hs.png" alt="banniere">
             <!-- =============================NAV-BAR========================================== -->
             <nav class="navbar navbar-expand-lg navbar-light" id="navbar_profil">
-                <a class="navbar-brand" href="home">Accueil</a>
+                <a class="navbar-brand" href="/">Accueil</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -110,13 +110,13 @@
                             <a class="navbar-brand" href="categories">Catégories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="members">Membres</a>
+                            <a class="navbar-brand" href="membres">Membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="profile">Profil</a>
+                            <a class="navbar-brand" href="profil">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="settings">Paramètres</a>
+                            <a class="navbar-brand" href="profil/parametres">Paramètres</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">

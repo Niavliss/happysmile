@@ -14,3 +14,4 @@ yarn-error.log
 /public/css/
 /public/img/
 /public/js/
+/bootstrap/cache/.gitignore

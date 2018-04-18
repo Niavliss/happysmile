@@ -17,38 +17,16 @@
     <div class="container" id="cont_body_categories">
         <div class="row">
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+            @foreach($posts as $post)
             <div class="col-3">
                 <div class="card txt">
                     <div class="card-body">
-                        <h5 class="card-title">Chuck Norris</h5>
-                        <p class="card-text">Chuck Norris a déjà compté jusqu´à l´infini. Deux fois. </p>
+                        <h5 class="card-title">{{$post->title}}</h5>
+                        <p class="card-text">{{$post->content}} </p>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card txt">
-                    <div class="card-body">
-                        <h5 class="card-title">Chuck Norris</h5>
-                        <p class="card-text">Chuck Norris donne fréquemment du sang à la Croix-Rouge. Mais jamais le sien.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card txt">
-                    <div class="card-body">
-                        <h5 class="card-title">Chuck Norris</h5>
-                        <p class="card-text">Chuck Norris comprend Jean-Claude Van Damme.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card txt">
-                    <div class="card-body">
-                        <h5 class="card-title">Chuck Norris</h5>
-                        <p class="card-text">Au restaurant, quand Chuck Norris commande un steak, le steak obéit.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <div class="col-3">
                 <div class="card pic">
                     <img class="card-img-top" src="{{URL::asset('img/bimage1.jpg')}}" alt="Card image cap">
