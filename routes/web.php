@@ -30,9 +30,9 @@ Route::get('/profil/{id}', 'ProfileController@profile')->name('front_profile');
 Route::get('/members', 'MembersController@members')->name('front_membres');
 Route::get('/messageries/{id}', 'HomeController@index')->name('messageries');
 
-
+Route::get('/amis/{id}', 'HomeController@index')->name('amis');
 
 Route::get('/spacelemons', 'HomeController@index')->name('spacelemons');
 
-
+Route::get('/post/{id}', 'HomeController@index')->name('post');
 */
