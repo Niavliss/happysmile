@@ -16,15 +16,14 @@ Route::get('/categories/videos/post/{id}', 'PostController@index')->name('front_
 
 
 
-Route::get('/profil', 'ProfileController@profile')->name('front_profile');
+Route::get('/profil', 'UserController@profile')->name('front_profile');
+Route::get('/profil/{id}', 'UserController@profile')->name('front_profile');
 Route::post('/profil/publier', 'PostController@create')->name('front_profile_publish');
-Route::get('/profil/parametres', 'ProfileController@profile')->name('front_profile');
-//Route::get('/profil/amis', 'ProfileController@index')->name('amis');
-//Route::get('/profil/messages', 'ProfileController@index')->name('amis');
-Route::get('/profil/{id}', 'ProfileController@profile')->name('front_profile');
+Route::get('/profil/parametres', 'UserController@profile')->name('front_profile');
+
 //Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');
 //Route::post('/profil/{id}/message', 'HomeController@index')->name('amis');
-//Route::get('/profil/{id}/amis', 'ProfileController@profile')->name('front_profile');
+//Route::get('/profil/{id}/amis', 'UserController@profile')->name('front_profile');
 
 /*
 Route::get('/members', 'MembersController@members')->name('front_membres');
