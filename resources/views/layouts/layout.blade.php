@@ -41,7 +41,7 @@
 
         <!-- =============================BANNER========================================== -->
         <div class="container clear" id="cont_entete_profil">
-            <img class="img-fluid" src="img/banner_hs.png" alt="banniere">
+            <img class="img-fluid" src="{{URL::asset('img/banner_hs.png')}}" alt="banniere">
             <!-- =============================NAV-BAR========================================== -->
             @guest
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar_profil">
@@ -53,7 +53,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="navbar-brand" href="categories">Catégories</a>
+                                <a class="navbar-brand" href="{{ route('front_categories') }}">Catégories</a>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
@@ -72,16 +72,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="categories">Catégories</a>
+                            <a class="navbar-brand" href="{{ route('front_categories') }}">Catégories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="membres">Membres</a>
+                            <a class="navbar-brand" href="{{ route('front_members') }}">Membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="profil">Profil</a>
+                            <a class="navbar-brand" href="{{ route('front_profile') }}">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="parametres">Paramètres</a>
+                            <a class="navbar-brand" href="{{ route('front_settings') }}">Paramètres</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">

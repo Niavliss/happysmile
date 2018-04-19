@@ -15,19 +15,31 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'asc')->take(16)->get();
+
         return view('categories', ['posts' => $posts]);
     }
 
-       /**
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function jokes()
     {
-        //$jokes = Post::type();
-        //return view('categories/blagues',['jokes'=>$jokes]);
+        $jokes = Post::where('type_media', '=', 'blague')->orderBy('created_at', 'asc')->take(16)->get();
+        return view('categories/blagues', ['jokes' => $jokes]);
     }
 
+    public function images()
+    {
+        $pics = Post::where('type_media', '=', 'image')->orderBy('created_at', 'asc')->take(16)->get();
+        return view('categories/images', ['pics' => $pics]);
+    }
+
+    public function videos()
+    {
+        $videos = Post::where('type_media', '=', 'video')->orderBy('created_at', 'asc')->take(16)->get();
+        return view('categories/videos', ['videos' => $videos]);
+    }
     /**
      * Show the form for creating a new resource.
      *
