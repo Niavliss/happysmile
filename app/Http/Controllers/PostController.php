@@ -19,6 +19,15 @@ class PostController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function jokes()
+    {
+        //$jokes = Post::type();
+        //return view('categories/blagues',['jokes'=>$jokes]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
