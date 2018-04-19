@@ -6,7 +6,7 @@
     <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
         <img class="img-fluid" src="{{URL::asset('img/user_logo.png')}}">
-        <h2>Pseudo</h2>
+        <h2>{{Auth::user()->name}}</h2>
         <ul>
             <li><button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_publier">Publier</button>
                 <div class="modal fade" id="modal_publier" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
