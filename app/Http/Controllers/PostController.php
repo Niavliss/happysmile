@@ -95,4 +95,9 @@ class PostController extends Controller
     {
         //
     }
+
+    public function publish()
+    {
+        return view('publish');
+    }
 }
