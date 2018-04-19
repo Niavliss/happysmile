@@ -12,8 +12,8 @@
                 <ul class="text-right">
                     <!-- ======================================================================= -->
                     @guest
-                        <li><a class="btn btn-warning" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                        <li><a class="btn btn-warning" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        <li><a class="btn btn-warning" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
+                        <li><a class="btn btn-warning" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -43,6 +43,26 @@
         <div class="container clear" id="cont_entete_profil">
             <img class="img-fluid" src="img/banner_hs.png" alt="banniere">
             <!-- =============================NAV-BAR========================================== -->
+            @guest
+                <nav class="navbar navbar-expand-lg navbar-light" id="navbar_profil">
+                    <a class="navbar-brand" href="/">Accueil</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="navbar-brand" href="categories">Catégories</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Post, Pseudo, .." aria-label="Search">
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Rechercher</button>
+                        </form>
+                    </div>
+                </nav>
+            @else
             <nav class="navbar navbar-expand-lg navbar-light" id="navbar_profil">
                 <a class="navbar-brand" href="/">Accueil</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,6 +90,7 @@
                     </form>
                 </div>
             </nav>
+            @endguest
         </div>
 </header>
         <!-- ================================CONTENT======================================= -->
