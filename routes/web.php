@@ -4,7 +4,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@home')->name('front_home');
 
-Route::get('/post/{id}', 'PostController@index')->name('front_categories');
+Route::get('/post/{id}', 'PostController@show')->name('front_post');
 
 Route::get('/categories', 'PostController@index')->name('front_categories');
 Route::get('/categories/blagues', 'PostController@jokes')->name('front_jokes');
