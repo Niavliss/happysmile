@@ -16,7 +16,9 @@ Route::post('/post/publier', 'PostController@create')->name('front_categories_pu
 Route::get('/profil', 'UserController@myprofile')->name('front_profile');
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile');
 Route::post('/profil/publier', 'PostController@create')->name('front_profile_publish');
-Route::get('/profil/parametres', 'UserController@settings')->name('front_profile');
+Route::get('/parametres', 'UserController@settings')->name('front_settings');
+
+Route::get('/membres', 'UserController@members')->name('front_members');
 
 //Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');
 //Route::post('/profil/{id}/message', 'HomeController@index')->name('amis');

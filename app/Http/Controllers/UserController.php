@@ -25,4 +25,9 @@ class UserController extends Controller
     {
         return view('settings');
     }
+
+    public function members()
+    {
+        return view('members');
+    }
 }
