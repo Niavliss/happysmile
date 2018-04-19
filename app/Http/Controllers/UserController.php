@@ -11,8 +11,18 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function myprofile()
+    {
+        return view('profile');
+    }
+
     public function profile()
     {
         return view('profile');
+    }
+
+    public function settings()
+    {
+        return view('settings');
     }
 }
