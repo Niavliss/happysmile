@@ -15,4 +15,4 @@ yarn-error.log
 /public/img/
 /public/js/
 /bootstrap/cache/.gitignore
-package.json
+package-lock.json
