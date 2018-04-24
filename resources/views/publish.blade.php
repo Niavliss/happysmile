@@ -15,10 +15,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Publier une blague :</h5>
-
+                        <textarea name="content"></textarea>
 
                         <ul><a href="/profil"><button class="btn btn-warning btn-sm">Retour</button></a>
-                            <button class="btn btn-warning btn-sm">Publier</button>
+                            <button type="submit" class="btn btn-warning btn-sm">Publier</button>
                         </ul>
                     </div>
                 </div>
