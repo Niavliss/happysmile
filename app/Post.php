@@ -19,6 +19,6 @@ class Post extends Model
     }
 
     protected $fillable = [
-        'title', 'content', 'type_media', 'user_id',
+        'title', 'content', 'type_media', 'user_id','privacy',
     ];
 }

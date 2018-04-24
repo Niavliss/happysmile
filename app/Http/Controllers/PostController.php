@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->take(16)->get();
+        $posts = Post::where('privacy', '=',0)->orderBy('created_at', 'asc')->take(16)->get();
 
         return view('categories', ['posts' => $posts]);
     }
