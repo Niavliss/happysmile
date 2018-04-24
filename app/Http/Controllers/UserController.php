@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +17,16 @@ class UserController extends Controller
     public function myprofile()
     {
         $user = Auth::user();
+        $posts = Post::all();
 
-        return view('mon-profil', ['user' => $user]);
+        return view('mon-profil', ['user' => $user], ['posts' => $posts]);
     }
 
     public function profile($id)
     {
         $user = User::findOrFail($id);
-        return view('profile', ['user' => $user]);
+        $posts = Post::all();
+        return view('profile', ['user' => $user], ['posts' => $posts]);
     }
 
     public function settings()
