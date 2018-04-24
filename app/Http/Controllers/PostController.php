@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -18,6 +19,11 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at', 'asc')->take(16)->get();
 
         return view('categories', ['posts' => $posts]);
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -47,18 +53,25 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories/publier');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function store(Request $request)
     {
-        //
+        $id = Auth::id();
+
+        $inputs = $request->all();
+        $inputs['user_id'] = $id;
+
+        Post::create($inputs);
+
+        return 'Post envoyé';
     }
 
     /**
