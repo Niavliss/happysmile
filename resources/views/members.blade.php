@@ -3,7 +3,6 @@
 @section('title', 'Membres')
 
 
-
 @section('content')
 
     <body>
@@ -13,14 +12,14 @@
         <div id="cont_body_membres">
             <div class="row">
 
-                <div class="col-sm-3">
-                    <div class="card">
+                @foreach($profils as $profil)
+                    <div class="col-3">
                         <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <p class="card-text">Profil : </p>
-                        </div
+                            <a href="{{ url('/profil/'.$profil->id) }}" class="badge badge-info">{{$profil->name}}</a>
+                            <p class="card-text">{{$profil->created_at}} </p>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
             </div>
         </div>

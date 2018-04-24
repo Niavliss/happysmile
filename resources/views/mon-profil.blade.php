@@ -7,8 +7,9 @@
     <div id="menu_profil">
         <img class="img-fluid" src="{{URL::asset('img/user_logo.png')}}">
         <h2>{{$user->name}}</h2>
+        <ul><a href="/publier"><button class="btn btn-warning btn-sm">Publier</button></a>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>
-            <li><button class="btn btn-warning btn-sm">Demander en amis</button></li>
+            <li><button class="btn btn-warning btn-sm">Messages</button></li>
         </ul>
     </div>
     <div class="container" id="cont_body_profil">

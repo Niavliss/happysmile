@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,12 +17,13 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('profile', ['user' => $user]);
+        return view('mon-profil', ['user' => $user]);
     }
 
-    public function profile()
+    public function profile($id)
     {
-        return view('profile');
+        $user = User::findOrFail($id);
+        return view('profile', ['user' => $user]);
     }
 
     public function settings()
@@ -31,6 +33,7 @@ class UserController extends Controller
 
     public function members()
     {
-        return view('members');
+        $profils =User::orderBy('created_at', 'asc')->take(16)->get();
+        return view('members', ['profils' => $profils]);
     }
 }

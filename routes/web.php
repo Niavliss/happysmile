@@ -13,7 +13,7 @@ Route::get('/categories/videos', 'PostController@videos')->name('front_videos');
 
 Route::get('/categories/publier', 'PostController@create')->name('front_categories_publish');
 Route::post('/categories/publier', 'PostController@store')->name('front_categories_store');
-Route::get('/profil', 'UserController@myprofile')->name('front_profile');
+Route::get('/mon-profil', 'UserController@myprofile')->name('front_profile');
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show');
 //Route::post('/profil/publier', 'PostController@create')->name('front_profile_publish');
 Route::get('/parametres', 'UserController@settings')->name('front_settings');
