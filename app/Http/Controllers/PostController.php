@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ class PostController extends Controller
         $videos = Post::where('type_media', '=', 'video')->orderBy('created_at', 'asc')->take(16)->get();
         return view('categories/videos', ['videos' => $videos]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -65,6 +67,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('categories/publier')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $id = Auth::id();
         $inputs = $request->all();
         $inputs['user_id'] = $id;
