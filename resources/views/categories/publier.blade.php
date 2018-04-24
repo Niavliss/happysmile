@@ -16,8 +16,7 @@
                             <div class="form-group col-md-3">
                                 <label for="type_media">Type :</label>
                                 <select name="type_media" id="type_media" class="custom-select mr-sm-2">
-                                    <option selected>Choisir</option>
-                                    <option value="blague">Blague</option>
+                                    <option value="blague" selected>Blague</option>
                                     <option value="image">Image</option>
                                     <option value="video">Video</option>
                                 </select>
