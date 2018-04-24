@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -60,18 +61,15 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $id = Auth::id();
-
         $inputs = $request->all();
         $inputs['user_id'] = $id;
-
         Post::create($inputs);
-
-        return 'Post envoyé';
+        return redirect('categories');
     }
 
     /**
