@@ -12,6 +12,7 @@
         <a href="{{ route('front_jokes') }}"><button class="btn btn-warning ">Blagues</button></a>
         <a href="{{ route('front_images') }}"><button class="btn btn-warning ">Images</button></a>
         <a href="{{ route('front_videos') }}"><button class="btn btn-warning ">Videos</button></a>
+        <a href="{{ route('front_categories_publish') }}"><button class="btn btn-warning ">Publier</button></a>
     </div>
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     <div class="container" id="cont_body_categories">
