@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->char('email')->unique();
             $table->string('password');
             $table->date('birth');
-            $table->string('pic_path')->default('user_logo');
+            $table->string('pic_path')->default('userprofileimg/zmPd6VqI0KiHGp7hZ35pNBJWytLJ5OzyPAJF0Gcl.png');
             $table->rememberToken();
             $table->timestamps();
             $table->index('birth');
