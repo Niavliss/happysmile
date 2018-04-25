@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row ">
     <div class="col pt-2">
-      <form method="post" action="page.php" enctype="" id="formu">
+      {{--<form method="post" action="page.php" enctype="" id="formu">--}}
         <div id="accordion" role="tablist" aria-multiselectable="true">
           <div class="card">
             <div class="card-header" role="tab" id="headingOne">
@@ -14,12 +14,16 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Photo du profil</a>
               </h5>
             </div>
-            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="custom-file card-block mt-1 mb-1 ">
-                <input type="file" name="photo" class="custom-file-input" id="photo">
-                <label class="custom-file-label" for="photo">Votre image</label>
-              </div>
-            </div>
+            {{--<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">--}}
+                {{--<div class="custom-file card-block mt-1 mb-1 ">--}}
+                  <form enctype="multipart/form-data" action="{{ route('upload_image') }}" method="POST">
+                    @csrf
+                    <input type="file" name="file" class="form-control-file" id="photo">
+                    <input type="submit" class="btn btn-sm btn-warning">
+                    {{--<label class="custom-file-label" for="file">Votre image</label>--}}
+                  </form>
+                {{--</div>--}}
+            {{--</div>--}}
           </div>
           <div class="card">
             <div class="card-header" role="tab" id="headingTwo">
@@ -222,7 +226,7 @@
                 </div>
                 <textarea class="form-control" id="Signal"> </textarea>
               </div>
-            </form>
+            {{--</form>--}}
           </div>
         </div>
       </div>

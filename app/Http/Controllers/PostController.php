@@ -89,6 +89,27 @@ class PostController extends Controller
         return redirect()->back();
     }
 
+    public function storePrivate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'content' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('categories/publier')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $id = Auth::id();
+        $inputs = $request->all();
+        $inputs['user_id'] = $id;
+        $inputs['privacy'] = 1;
+        Post::create($inputs);
+        return redirect('categories');
+    }
     /**
      * Display the specified resource.
      *
@@ -138,6 +159,6 @@ class PostController extends Controller
 
     public function publish()
     {
-        return view('publish');
+        return view('publierProfil');
     }
 }
