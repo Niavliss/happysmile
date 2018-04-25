@@ -6,7 +6,6 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-Use Image;
 
 class UserController extends Controller
 {
@@ -32,7 +31,8 @@ class UserController extends Controller
 
     public function settings()
     {
-        return view('settings');
+        $user = Auth::user();
+        return view('settings', ['user' => $user]);
     }
 
     public function members()
@@ -65,18 +65,24 @@ class UserController extends Controller
 //        $post = new Post()
 //    }
 
-    public function upload_img(Request $request)
+    public function uploadImg(Request $request)
     {
+        $pic_path = $request->file->store('userprofileimg', 'public');
 
-        if ($request->hasFile('pic_path')) {
-            $pic_path = $request->file('pic_path');
-            $filename = time() . '.' . $pic_path->getClientOriginalExtension();
-            Image::make($pic_path)->save(public_path('profile_pic/' . $filename));
+        $user = Auth::user();
+        $user->pic_path = $pic_path;
+        $user->save();
 
-            $user = Auth::user();
-            $user->pic_path = $filename;
-            $user->save();
-        }
-        return view('profile', array('user' => Auth::user()) );
+        return view('settings', ['user' => $user]);
+//        if ($request->hasFile('pic_path')) {
+//            $pic_path = $request->file('pic_path');
+//            $filename = time() . '.' . $pic_path->getClientOriginalExtension();
+//            Image::make($pic_path)->save(public_path('profile_pic/' . $filename));
+//
+//            $user = Auth::user();
+//            $user->pic_path = $filename;
+//            $user->save();
+//        }
+//        return view('profile', array('user' => Auth::user()) );
     }
 }
