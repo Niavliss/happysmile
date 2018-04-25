@@ -19,7 +19,7 @@ class UserController extends Controller
         $user = Auth::user();
         $posts = Post::all();
 
-        return view('mon-profil', ['user' => $user], ['posts' => $posts]);
+        return view('myprofile', ['user' => $user], ['posts' => $posts]);
     }
 
     public function profile($id)

@@ -25,8 +25,8 @@
                                 <label for="privacy">Statut :</label>
                                 <select name="privacy" id="privacy" class="custom-select mr-sm-2">
                                     <option selected>Choisir</option>
-
                                     <option value="0">Public</option>
+                                    <option value="1">Privé</option>
                                 </select>
                             </div>
                             <div class="form-group col-md">
