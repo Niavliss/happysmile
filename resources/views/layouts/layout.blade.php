@@ -14,6 +14,7 @@
                         <li><a class="btn btn-warning" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
+                            <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->pic_path) }}" style="width: 40px; height: 40px; border-radius: 50%;">
                             <a id="navbarDropdown" class="btn btn-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
