@@ -14,7 +14,7 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Photo du profil</a>
               </h5>
             </div>
-            {{--<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">--}}
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 {{--<div class="custom-file card-block mt-1 mb-1 ">--}}
                   <form enctype="multipart/form-data" action="{{ route('upload_image') }}" method="POST">
                     @csrf
@@ -23,7 +23,7 @@
                     {{--<label class="custom-file-label" for="file">Votre image</label>--}}
                   </form>
                 {{--</div>--}}
-            {{--</div>--}}
+            </div>
           </div>
           <div class="card">
             <div class="card-header" role="tab" id="headingTwo">
