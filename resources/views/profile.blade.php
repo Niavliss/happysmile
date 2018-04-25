@@ -5,7 +5,8 @@
 @section('content')
     <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
-        <img class="img-fluid" src="{{URL::asset('img/user_logo.png')}}">
+        {{--<img class="img-fluid" src="{{URL::asset('img/user_logo.png')}}">--}}
+        <img src="/profile_pic/{{ $user->pic_path }}">
         <h2>{{$user->name}}</h2>
         <ul><a href="/publier"><button class="btn btn-warning btn-sm">Publier</button></a>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>

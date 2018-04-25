@@ -17,8 +17,9 @@ Route::get('/profil', 'UserController@myprofile')->name('front_profile');
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show');
 //Route::post('/profil/publier', 'PostController@create')->name('front_profile_publish');
 Route::get('/parametres', 'UserController@settings')->name('front_settings');
+Route::post('/profil', 'UserController@upload_img')->name('upload_image');
 Route::get('/membres', 'UserController@members')->name('front_members');
-Route::get('/publier', 'PostController@publish')->name('front_profile_publish');
+Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 
 // Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');
 // Route::post('/profil/{id}/message', 'HomeController@index')->name('amis');

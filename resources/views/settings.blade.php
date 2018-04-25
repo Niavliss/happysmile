@@ -15,10 +15,14 @@
               </h5>
             </div>
             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="custom-file card-block mt-1 mb-1 ">
-                <input type="file" name="photo" class="custom-file-input" id="photo">
-                <label class="custom-file-label" for="photo">Votre image</label>
-              </div>
+                <div class="custom-file card-block mt-1 mb-1 ">
+                  <form enctype="multipart/form-data" action="/resources/views/profile.blade.php" method="POST">
+                  <input type="file" name="pic_path" class="custom-file-input" id="photo">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <input type="submit" class="btn btn-sm btn-warning">
+                  <label class="custom-file-label" for="pic_path">Votre image</label>
+                  </form>
+                </div>
             </div>
           </div>
           <div class="card">
