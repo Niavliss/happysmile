@@ -14,10 +14,9 @@
                         <li><a class="btn btn-warning" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="btn btn-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('front_profile') }}">{{ __('Profil') }}</a>
                                 <a class="dropdown-item" href="{{ route('front_settings') }}">{{ __('Paramètres') }}</a>
@@ -26,7 +25,6 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Se déconnecter') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
