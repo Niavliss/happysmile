@@ -18,7 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('privacy', '=',0)->orderBy('created_at', 'asc')->take(16)->get();
+        $posts = Post::where('privacy', '=', 0)
+            ->orderBy('created_at', 'asc')
+            ->take(16)
+            ->get();
 
         return view('categories', ['posts' => $posts]);
     }
@@ -83,7 +86,7 @@ class PostController extends Controller
         $inputs = $request->all();
         $inputs['user_id'] = $id;
         Post::create($inputs);
-        return redirect('categories');
+        return redirect()->back();
     }
 
     /**

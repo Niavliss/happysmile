@@ -1,9 +1,7 @@
 <html>
 <head>
     <title>@yield('title')</title>
-    <link href="{{URL::asset('css/all.css')}}" rel="stylesheet">
-
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -111,6 +109,6 @@
     </div>
 </footer>
 
-<script src="{{URL:: asset('js/all.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
