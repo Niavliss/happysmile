@@ -1,0 +1,65 @@
+/* PAGE PROFIL */
+
+#navbar_profil {
+  background-color: #ffc107;
+  position: relative;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+#cont_fiche_profil {
+  background-color: #313131;
+  color: white;
+  width: 100%;
+  height: 390px;
+  margin-top: -25px;
+  position: absolute;
+  z-index: -1;
+}
+
+#menu_profil {
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+}
+
+#menu_profil img {
+  border: solid 2px white;
+  border-radius: 50%;
+  width: 200px;
+  height: auto;
+}
+
+#menu_profil ul {
+  list-style-type: none;
+  padding-top: 20px;
+  padding-bottom: 2px;
+  text-align: center;
+}
+
+#menu_profil li {
+  display: inline;
+  margin-top: 10px;
+}
+
+#cont_body_profil {
+  border-radius: 5px;
+  background-color: white;
+  padding: 1%;
+  margin-bottom: 15px;
+}
+
+#cont_body_erreur {
+  border-radius: 5px;
+  background-color: white;
+  padding: 1%;
+  margin-bottom: 15px;
+}
+
+.status {
+  margin-bottom: 5px;
+}
+
+#navbar_profil a {
+  padding: 3px;
+}

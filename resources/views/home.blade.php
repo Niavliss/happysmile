@@ -7,32 +7,32 @@
     <div class="container">
         <div class="row">
             <div class="col-3"></div>
-            <div id="carousel_accueil" class="col-6 carousel slide" data-ride="carousel">
+            <div id="carousel_home" class="carousel slide col-6" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel_accueil" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel_accueil" data-slide-to="1"></li>
-                    <li data-target="#carousel_accueil" data-slide-to="2"></li>
-                    <li data-target="#carousel_accueil" data-slide-to="3"></li>
+                    <li data-target="#carousel_home" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_home" data-slide-to="1"></li>
+                    <li data-target="#carousel_home" data-slide-to="2"></li>
+                    <li data-target="#carousel_home" data-slide-to="3"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{URL::asset('img/1.jpg')}}" alt="First slide">
+                        <img class="d-block w-100" src="{{URL::asset('img/1.jpg')}}" height="400" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{URL::asset('img/2.jpg')}}" alt="Second slide">
+                        <img class="d-block w-100" src="{{URL::asset('img/2.jpg')}}" height="400" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{URL::asset('img/3.jpg')}}" alt="Third slide">
+                        <img class="d-block w-100" src="{{URL::asset('img/3.jpg')}}" height="400" alt="Third slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{URL::asset('img/4.jpg')}}" alt="Four slide">
+                        <img class="d-block w-100" src="{{URL::asset('img/4.jpg')}}" height="400" alt="Four slide">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carousel_accueil" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carousel_home" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel_accueil" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel_home" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>

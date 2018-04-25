@@ -1,0 +1,24 @@
+/* BARRE CONNEXION */
+body {
+  background: url('/img/whitetext.jpg') center center;
+}
+
+#ligne_connexion {
+  background-color: #333333;
+}
+
+#ligne_connexion ul {
+  list-style-type: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#ligne_connexion li {
+  display: inline;
+}
+
+footer {
+  background-color: #333333;
+  text-align: center;
+  color: white;
+}
