@@ -16,8 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->mediumText('content');
-            $table->string('type_media');
+            $table->enum('type_media',['blague','image','video']);
             $table->smallInteger('lemonlike')->default(0);
             $table->boolean('flag')->default(0);
             $table->boolean('privacy')->default(0);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 Use Image;
@@ -17,13 +18,16 @@ class UserController extends Controller
     public function myprofile()
     {
         $user = Auth::user();
+        $posts = Post::all();
 
-        return view('profile', ['user' => $user]);
+        return view('mon-profil', ['user' => $user], ['posts' => $posts]);
     }
 
-    public function profile()
+    public function profile($id)
     {
-        return view('profile');
+        $user = User::findOrFail($id);
+        $posts = Post::all();
+        return view('profile', ['user' => $user], ['posts' => $posts]);
     }
 
     public function settings()
@@ -33,7 +37,8 @@ class UserController extends Controller
 
     public function members()
     {
-        return view('members');
+        $profils =User::orderBy('created_at', 'asc')->take(16)->get();
+        return view('members', ['profils' => $profils]);
     }
 
     public function publish(Request $request)
