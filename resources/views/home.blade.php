@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div id="cont_body_accueil">
+        <div id="cont_body_home">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="card">

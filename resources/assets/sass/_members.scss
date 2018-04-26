@@ -1,25 +1,24 @@
 /* PAGE MEMBRES */
 
-#cont_fiche_membres {
+#cont_fiche_members {
   background-color: #313131;
   color: white;
   width: 100%;
   height: 150px;
   position: absolute;
-  margin-top: -25px;
+  margin-top: -130px;
   z-index: -1;
 }
 
-#cont_fiche_membres h2 {
+#cont_fiche_members h2 {
   margin-top: 50px;
   text-align: center;
 }
 
-#cont_body_membres {
+#cont_body_members {
   border-radius: 5px;
   background-color: white;
   padding: 1%;
-  margin-top: 100px;
+  margin-top: 105px;
   margin-bottom: 15px;
-  height: auto;
 }
