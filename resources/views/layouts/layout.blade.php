@@ -103,42 +103,42 @@
 
         <!-- =============================FOOTER========================================== -->
 <footer>
-    <div class="container-fluid">
+    <div class="container-fluid" id="bann-footer">
         <div class="row">
             <div class="col-12">
                 <img src="/img/banniere1.png" width="400px";
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="content-footer">
         <div class="row">
             <div class="col-3">
-                <h3>Contact</h3>
+                <h3 class="content-title">Contact</h3>
                 <p>33 Grand Rue <br>
                     26 000 VALENCE <br>
                     happysmile@mail.fr
                 </p>
             </div>
             <div class="col-3">
-                <h3>Explorer</h3>
+                <h3 class="content-title">Explorer</h3>
                 <ul style="list-style: none;">
-                    <li>Accueil</li>
-                    <li>Catégorie</li>
-                    <li>S'inscrire</li>
-                    <li>Se connecter</li>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/categories">Catégories</a></li>
+                    <li><a href="/register">S'inscrire</a></li>
+                    <li><a href="/login">Se connecter</a></li>
                 </ul>
             </div>
             <div class="col-3">
-                <h3>Notre entreprise</h3>
+                <h3 class="content-title">Notre entreprise</h3>
                 <ul style="list-style: none;">
                     <li>A propos</li>
                     <li>Notre équipe</li>
                     <li>Politique de confidentialité</li>
-                    <li>CGU</li>
+                    <li><a href="/cgu">CGU</a></li>
                 </ul>
             </div>
             <div class="col-3">
-                <h3>Support</h3>
+                <h3 class="content-title">Support</h3>
                 <ul style="list-style: none;">
                     <li>FAQ</li>
                     <li>Aide</li>
@@ -147,6 +147,7 @@
             </div>
         </div>
     </div>
+    <hr>
 
 
 
