@@ -13,9 +13,11 @@
                         <li><a class="btn btn-warning" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
                         <li><a class="btn btn-warning" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                     @else
+                        <li>
+                            <a href="{{ route('front_profile') }}"><img class="img-fluid" src="{{ asset('storage/' . Auth::user()->pic_path) }}" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->pic_path) }}" style="width: 40px; height: 40px; border-radius: 50%;">
-                            <a id="navbarDropdown" class="btn btn-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
