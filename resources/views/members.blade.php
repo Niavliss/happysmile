@@ -7,9 +7,9 @@
 
     <body>
     <!-- ======================================================================= -->
-    <div id="cont_fiche_membres"><h2>Membres du site</h2></div>
+    <div id="cont_fiche_members"><h2>Membres du site</h2></div>
     <div class="container">
-        <div id="cont_body_membres">
+        <div id="cont_body_members">
             <div class="row">
 
                 @foreach($profils as $profil)

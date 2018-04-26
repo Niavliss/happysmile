@@ -11,10 +11,27 @@ body {
   list-style-type: none;
   padding-top: 2px;
   padding-bottom: 2px;
+  margin: 0;
 }
 
 #ligne_connexion li {
-  display: inline;
+  display: inline-grid;
+}
+
+#ligne_connexion a {
+  text-decoration: none;
+}
+
+#ligne_connexion a:hover {
+  background-color: inherit;
+}
+
+#ligne_connexion #navbarDropdown {
+  color: white;
+}
+
+#ligne_connexion #navbarDropdown:hover {
+  color: #ffc107;
 }
 
 footer {

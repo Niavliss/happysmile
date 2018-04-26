@@ -3,7 +3,9 @@
 @section('title', 'Paramètres')
 
 @section('content')
-<div class="container">
+<div id="cont_fiche_settings"></div>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<div id="container_settings" class="container">
   <div class="row ">
     <div class="col pt-2">
       {{--<form method="post" action="page.php" enctype="" id="formu">--}}
@@ -115,9 +117,9 @@
         <div class="row m-1">
           <button type="submit" class="btn btn-lg btn-warning btn-block" id="envoi">Enregistrer les modifications</button>
         </div>
-      </form>
+      {{--</form>--}}
     </div>
-    <span class="border-right"></span>
+    {{--<span class="border-right"></span>--}}
     <div class="col pt-2">
       <div id="accordion" role="tablist" aria-multiselectable="true">
         <div class="card">
@@ -226,7 +228,7 @@
                 </div>
                 <textarea class="form-control" id="Signal"> </textarea>
               </div>
-            {{--</form>--}}
+            </form>
           </div>
         </div>
       </div>
