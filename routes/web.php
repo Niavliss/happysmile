@@ -20,6 +20,8 @@ Route::post('/publier', 'PostController@store')->name('front_profile_store');
 Route::get('/parametres', 'UserController@settings')->name('front_settings');
 Route::post('/profil', 'UserController@uploadImg')->name('upload_image');
 Route::get('/membres', 'UserController@members')->name('front_members');
+
+Route::get('/cgu', 'OurCompany@cgu')->name('cgu');
 //Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 
 // Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');
