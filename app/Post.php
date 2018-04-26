@@ -21,4 +21,8 @@ class Post extends Model
     protected $fillable = [
         'title', 'content', 'type_media', 'user_id','privacy',
     ];
+
+    public function user() {
+        return $this->belongsTo('App\User','user_id');
+    }
 }
