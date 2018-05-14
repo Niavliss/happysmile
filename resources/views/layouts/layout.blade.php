@@ -132,8 +132,7 @@
             <div class="col-3">
                 <h3 class="content-title">Notre entreprise</h3>
                 <ul style="list-style: none;">
-                    <li>A propos</li>
-                    <li>Notre équipe</li>
+                    <li><a href="/a-propos">A propos</a></li>
                     <li><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
                     <li><a href="/cgu">CGU</a></li>
                 </ul>

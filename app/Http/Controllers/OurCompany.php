@@ -15,4 +15,9 @@ class OurCompany extends Controller
     {
         return view('privacypolicy');
     }
+
+    public function about()
+    {
+        return view('about');
+    }
 }
