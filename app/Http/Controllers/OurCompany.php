@@ -10,4 +10,9 @@ class OurCompany extends Controller
     {
         return view('termsandconditions');
     }
+
+    public function privacypolicy()
+    {
+        return view('privacypolicy');
+    }
 }

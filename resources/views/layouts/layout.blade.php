@@ -124,8 +124,9 @@
                 <ul style="list-style: none;">
                     <li><a href="/">Accueil</a></li>
                     <li><a href="/categories">Catégories</a></li>
-                    <li><a href="/register">S'inscrire</a></li>
+                    @guest<li><a href="/register">S'inscrire</a></li>
                     <li><a href="/login">Se connecter</a></li>
+                    @endguest
                 </ul>
             </div>
             <div class="col-3">
@@ -133,7 +134,7 @@
                 <ul style="list-style: none;">
                     <li>A propos</li>
                     <li>Notre équipe</li>
-                    <li>Politique de confidentialité</li>
+                    <li><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
                     <li><a href="/cgu">CGU</a></li>
                 </ul>
             </div>
