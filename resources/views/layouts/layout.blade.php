@@ -141,8 +141,7 @@
                 <h3 class="content-title">Support</h3>
                 <ul style="list-style: none;">
                     <li><a href="/faq">FAQ</a></li>
-                    <li>Aide</li>
-                    <li>Signaler un problème</li>
+                    <li><a href="/signaler-un-probleme">Signaler un problème</a></li>
                 </ul>
             </div>
         </div>

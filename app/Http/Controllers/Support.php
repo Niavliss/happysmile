@@ -10,4 +10,9 @@ class Support extends Controller
     {
         return view('faq');
     }
+
+    public function reportanissue()
+    {
+        return view('reportanissue');
+    }
 }
