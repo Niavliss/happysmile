@@ -140,7 +140,7 @@
             <div class="col-3">
                 <h3 class="content-title">Support</h3>
                 <ul style="list-style: none;">
-                    <li>FAQ</li>
+                    <li><a href="/faq">FAQ</a></li>
                     <li>Aide</li>
                     <li>Signaler un problème</li>
                 </ul>
