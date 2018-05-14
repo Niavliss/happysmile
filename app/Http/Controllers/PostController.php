@@ -85,8 +85,9 @@ class PostController extends Controller
         $id = Auth::id();
         $inputs = $request->all();
         $inputs['user_id'] = $id;
+        $inputs['privacy'] = 0;
         Post::create($inputs);
-        return redirect()->back();
+        return redirect('categories');
     }
 
     public function storePrivate(Request $request)

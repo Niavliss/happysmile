@@ -21,14 +21,7 @@
                                     <option value="video">Video</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="privacy">Statut :</label>
-                                <select name="privacy" id="privacy" class="custom-select mr-sm-2">
-                                    <option selected>Choisir</option>
 
-                                    <option value="0">Public</option>
-                                </select>
-                            </div>
                             <div class="form-group col-md">
                                 <label for="title">Titre :</label>
                                 <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="title" value="{{ old('title')}}">
