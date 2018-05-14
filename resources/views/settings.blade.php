@@ -210,7 +210,7 @@
           </div>
           <div id="collapse2Three" class="collapse text-justify" role="tabpanel" aria-labelledby="headingThree">
             <span>
-              <p class="p-1">Les Logos du site Happy Smile et de l'entreprise Space Lemons sont la proprités de Space Lemons.</p>
+              <p class="p-1">Les Logos du site Happy Smile et de l'entreprise Space Lemons sont la propriété de Space Lemons.</p>
             </span>
           </div>
         </div>
