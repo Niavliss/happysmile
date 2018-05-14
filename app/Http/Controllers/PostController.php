@@ -36,19 +36,19 @@ class PostController extends Controller
      */
     public function jokes()
     {
-        $jokes = Post::where('type_media', '=', 'blague')->orderBy('created_at', 'asc')->take(16)->get();
+        $jokes = Post::where('type_media', '=', 'blague')->where('privacy', '=', 0)->orderBy('created_at', 'asc')->take(16)->get();
         return view('categories/blagues', ['jokes' => $jokes]);
     }
 
     public function images()
     {
-        $pics = Post::where('type_media', '=', 'image')->orderBy('created_at', 'asc')->take(16)->get();
+        $pics = Post::where('type_media', '=', 'image')->where('privacy', '=', 0)->orderBy('created_at', 'asc')->take(16)->get();
         return view('categories/images', ['pics' => $pics]);
     }
 
     public function videos()
     {
-        $videos = Post::where('type_media', '=', 'video')->orderBy('created_at', 'asc')->take(16)->get();
+        $videos = Post::where('type_media', '=', 'video')->where('privacy', '=', 0)->orderBy('created_at', 'asc')->take(16)->get();
         return view('categories/videos', ['videos' => $videos]);
     }
 
@@ -85,8 +85,9 @@ class PostController extends Controller
         $id = Auth::id();
         $inputs = $request->all();
         $inputs['user_id'] = $id;
+        $inputs['privacy'] = 0;
         Post::create($inputs);
-        return redirect()->back();
+        return redirect('categories');
     }
 
     public function storePrivate(Request $request)

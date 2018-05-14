@@ -45,12 +45,11 @@
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             @foreach($posts as $post)
                 <div class="col-3">
-                    <div class="card txt">
+                    <div class="card txt post">
                         <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
-                            <h7>{{$post->user->name}}</h7>
-
-                            <p class="card-text">{{$post->content}} </p>
+                            <a href="{{ url('post/'.$post->id) }}" class="badge badge-warning mr-2" role="button">{{$post->title}}</a>
+                            <a href="{{ url('profil/'.$post->user->id) }}">{{$post->user->name}}</a>
+                            <div class="card-text mt-2">{{$post->content}} </div>
                         </div>
                     </div>
                 </div>
