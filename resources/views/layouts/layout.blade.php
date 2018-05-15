@@ -38,7 +38,29 @@
                 </ul>
             </div>
         </div>
+    <!-- =================================NOTIFICATIONS====================================== -->
+    @if(Session::has('notification'))
+        <div class="container">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('notification') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    @endif
 
+    @if(Session::has('notification-wrong'))
+        <div class="container">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ Session::get('notification-wrong') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        </div>
+@endif
 
         <!-- =============================BANNER========================================== -->
         <div class="container clear" id="cont_entete_profil">
@@ -81,9 +103,6 @@
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{ route('front_profile') }}">Profil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('front_settings') }}">Paramètres</a>
-                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Post, Pseudo, .." aria-label="Search">
@@ -97,9 +116,10 @@
         <!-- ================================CONTENT======================================= -->
 
 
-<div>
+
+<main>
     @yield('content')
-</div>
+</main>
 
         <!-- =============================FOOTER========================================== -->
 <footer>

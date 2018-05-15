@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +38,7 @@ class UserController extends Controller
 
     public function members()
     {
-        $profils =User::orderBy('created_at', 'asc')->take(16)->get();
+        $profils = User::orderBy('created_at', 'asc')->take(16)->get();
         return view('members', ['profils' => $profils]);
     }
 
@@ -73,16 +74,30 @@ class UserController extends Controller
         $user->pic_path = $pic_path;
         $user->save();
 
+        $request->session()->flash('notification', 'Photo de profil changée!');
         return view('settings', ['user' => $user]);
-//        if ($request->hasFile('pic_path')) {
-//            $pic_path = $request->file('pic_path');
-//            $filename = time() . '.' . $pic_path->getClientOriginalExtension();
-//            Image::make($pic_path)->save(public_path('profile_pic/' . $filename));
-//
-//            $user = Auth::user();
-//            $user->pic_path = $filename;
-//            $user->save();
-//        }
-//        return view('profile', array('user' => Auth::user()) );
+    }
+
+    public function uploadPassword(Request $request)
+    {
+        $validatedData = $request->validate([
+            'password' => 'required|string|min:6',
+            'new_password' => 'required|string|min:6|confirmed'
+        ]);
+
+        $user = Auth::user();
+
+        if (! Hash::check($request->input('password'), $user->password)) {
+            return back()
+                ->withErrors(['password' => 'Mot de passe actuel invalide'])
+                ->withInput();
+        }
+
+        $user->password = Hash::make($validatedData['new_password']);
+        $user->save();
+
+        $request->session()->flash('notification', 'Mot de passe changé!');
+
+        return view('settings', ['user' => $user]);
     }
 }

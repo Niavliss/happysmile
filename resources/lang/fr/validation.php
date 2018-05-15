@@ -171,5 +171,6 @@ return [
     'available' => 'disponible',
     'size' => 'taille',
     'birth' => 'date d\'anniversaire',
+    'new_password' => 'Nouveau mot de passe',
 ],
 ];

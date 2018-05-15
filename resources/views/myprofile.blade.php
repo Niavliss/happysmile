@@ -10,6 +10,7 @@
         <ul><a href="/publier"><button class="btn btn-warning btn-sm">Publier</button></a>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>
             <li><button class="btn btn-warning btn-sm">Messages</button></li>
+            <li><a href="/parametres"><button class="btn btn-warning btn-sm">Paramètres</button></a></li>
         </ul>
     </div>
     <div class="container" id="cont_body_profil">

@@ -18,7 +18,9 @@ Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show')
 Route::get('/publier', 'PostController@create')->name('front_profile_publish');
 Route::post('/publier', 'PostController@store')->name('front_profile_store');
 Route::get('/parametres', 'UserController@settings')->name('front_settings');
-Route::post('/profil', 'UserController@uploadImg')->name('upload_image');
+Route::post('/modification-photo', 'UserController@uploadImg')->name('upload_image');
+Route::post('/modification-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
+Route::post('/modification-email', 'UserController@uploadEmail')->name('upload_email');
 Route::get('/membres', 'UserController@members')->name('front_members');
 
 Route::get('/cgu', 'OurCompany@cgu')->name('cgu');
@@ -27,6 +29,12 @@ Route::get('/a-propos', 'OurCompany@about')->name('about');
 
 Route::get('/faq', 'Support@faq')->name('faq');
 Route::get('/signaler-un-probleme', 'Support@reportanissue')->name('reportanissue');
+
+
+//TEST SETTINGS :
+Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
+Route::post('/modifier-adresse-email', 'UserController@uploadEmail')->name('upload_email');
+
 //Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 
 // Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');
