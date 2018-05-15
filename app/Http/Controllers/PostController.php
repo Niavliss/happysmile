@@ -132,7 +132,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post/edit', compact('post'));
     }
 
     /**
@@ -144,7 +144,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'content' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('post/'.$post['id'].'/editer')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $post['title']=request('title');
+        $post['content']=request('content');
+        $post->save();
+        return redirect('/post/'.$post['id']);
     }
 
     /**
@@ -155,7 +169,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
     }
 
     public function publish()
