@@ -17,11 +17,22 @@
                         <p class="card-text content">{{ $post->content }} </p>
                     </div>
                 </div>
-                <div class="bottompost">
-                    <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
-                    <span class="numbers"> {{$post->lemonlike}} </span>
-                    <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="lemonlike">
-                    <span class="numbers"> </span>
+                <div class="bottompost container">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                            <img class="icon-like" src="{{asset('img/lemonlike.png')}}" alt="lemonlike">
+                            <span class="numbers"> {{$post->lemonlike}} </span>
+                        </div>
+                        <div class="col-2">
+                            <img class="icon-com" src="{{asset('img/comment.png')}}" alt="commentaire">
+                            <span class="numbers"> </span>
+                        </div>
+                        <div class="col-2">
+                            <a href="{{url('post/'.$post->id .'/editer')}}">
+                                <button class="btn-sm btn-warning">Editer</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
