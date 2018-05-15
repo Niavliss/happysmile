@@ -14,25 +14,24 @@
     </div>
     <div class="container" id="cont_body_profil">
         <div class="row">
-            <div class="col-12 status">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bienvenue !</h5>
-                        <p class="card-text">Vous pourrez prochainement publier des articles dans cette section une fois votre compte créé et connecté.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            @foreach ($posts as $post)
+                <div class="col-12">
+                    <div class="card txt">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$post->title}}</h5>
+                            <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
+                            <p class="card-text content">{{ $post->content }} </p>
+                        </div>
                     </div>
-                    <img class="card-img-bottom" src="{{URL::asset('img/banner_hs.png')}}" alt="banner_image">
-                </div>
-            </div>
-            <div class="col-12 status">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Ajouter vos amis !</h5>
-                        <p class="card-text">Une fonction invitation sera prochainement intégrée pour inviter les autres utilisateurs du site à rejoindre votre liste d\'amis et vous permettre ainsi de partager du contenu avec eux !</p>
-                        <p class="card-text"><small class="text-muted">Last updated 1 mins ago</small></p>
+                    <div class="bottompost">
+                        <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
+                        <span class="numbers"> {{$post->lemonlike}} </span>
+                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="lemonlike">
+                        <span class="numbers"> </span>
                     </div>
                 </div>
-            </div>
+
+            @endforeach
         </div>
     </div>
 @endsection

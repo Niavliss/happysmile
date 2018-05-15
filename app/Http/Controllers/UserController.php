@@ -17,7 +17,7 @@ class UserController extends Controller
     public function myprofile()
     {
         $user = Auth::user();
-        $posts = Post::all();
+        $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
 
         return view('myprofile', ['user' => $user], ['posts' => $posts]);
     }
