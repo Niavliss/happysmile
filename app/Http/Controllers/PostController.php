@@ -169,11 +169,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        //
     }
 
     public function publish()
     {
         return view('publierProfil');
+    }
+
+    public function softDelete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+
+        session()->flash('message', 'Votre post a bien été supprimé');
+
+        return redirect()->route('front_categories');
     }
 }

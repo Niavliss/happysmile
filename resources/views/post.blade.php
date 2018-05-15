@@ -32,6 +32,11 @@
                                 <button class="btn-sm btn-warning">Editer</button>
                             </a>
                         </div>
+                        <div class="col-2">
+                            <a href="{{Route('front_post_delete', ['id' => $post->id])}}">
+                                <button class="btn-sm btn-warning">Supprimer</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

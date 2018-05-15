@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->smallInteger('lemonlike')->default(0);
             $table->boolean('flag')->default(0);
             $table->boolean('privacy')->default(0);
-            $table->tinyInteger('access')->default(0);
+            $table->softDeletes();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
