@@ -18,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $posts = Post::where('privacy', '=', 0)
             ->orderBy('created_at', 'asc')
             ->take(16)
@@ -119,9 +120,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view('post', ['post' => $post]);
+        return view('post', ['post' => $post, 'user' => $user]);
     }
 
     /**

@@ -27,6 +27,7 @@
                             <img class="icon-com" src="{{asset('img/comment.png')}}" alt="commentaire">
                             <span class="numbers"> </span>
                         </div>
+                        @if($user->id == $post->user->id)
                         <div class="col-2">
                             <a href="{{url('post/'.$post->id .'/editer')}}">
                                 <button class="btn-sm btn-warning">Editer</button>
@@ -37,6 +38,7 @@
                                 <button class="btn-sm btn-warning">Supprimer</button>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
