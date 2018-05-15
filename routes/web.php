@@ -22,6 +22,11 @@ Route::post('/profil', 'UserController@uploadImg')->name('upload_image');
 Route::get('/membres', 'UserController@members')->name('front_members');
 
 Route::get('/cgu', 'OurCompany@cgu')->name('cgu');
+Route::get('/politique-de-confidentialite', 'OurCompany@privacypolicy')->name('privacypolicy');
+Route::get('/a-propos', 'OurCompany@about')->name('about');
+
+Route::get('/faq', 'Support@faq')->name('faq');
+Route::get('/signaler-un-probleme', 'Support@reportanissue')->name('reportanissue');
 //Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 
 // Route::get('/profil/{id}/message', 'HomeController@index')->name('amis');

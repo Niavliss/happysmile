@@ -44,12 +44,27 @@
         <div class="row">
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             @foreach($posts as $post)
-                <div class="col-3">
-                    <div class="card txt post">
-                        <div class="card-body">
-                            <a href="{{ url('post/'.$post->id) }}" class="badge badge-warning mr-2" role="button">{{$post->title}}</a>
-                            <a href="{{ url('profil/'.$post->user->id) }}">{{$post->user->name}}</a>
-                            <div class="card-text mt-2">{{$post->content}} </div>
+                <div class="col-xl-3 col-sm-6 p-2">
+                    <div class="card post">
+                        <div class="card-body p-2">
+                            <a href="{{ url('post/'.$post->id) }}"><h4 class="card-title">{{$post->title}}</h4></a>
+                            <ul class="list-post">
+                                <li><span class="card-subtitle text-muted"> Type :</span> <a
+                                            href="{{ url('categories/'.$post->type_media) .'s' }}"
+                                            class="card-link">{{$post->type_media}}</a></li>
+                                <li><span class="card-subtitle text-muted mb-2">Auteur :</span> <a
+                                            href="{{ url('profil/'.$post->user->id) }}">{{$post->user->name}}</a></li>
+                                <li>
+                                    <span class="card-subtitle text-muted mb-2">Date de création :</span> {{$post->created_at->format('d-m-Y')}}
+                                </li>
+                            </ul>
+                            <div class="card-text mt-3">{{substr($post->content,0,60)}} </div>
+                        </div>
+                        <div class="bottompost">
+                            <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
+                            <span class="numbers"> {{$post->lemonlike}} </span>
+                            <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="lemonlike">
+                            <span class="numbers"> </span>
                         </div>
                     </div>
                 </div>

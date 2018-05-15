@@ -25,7 +25,35 @@
 }
 
 .post {
-  border: 2px solid #ffc107;
-  height: 16em;
+  border: 1px solid #ffc107;
   overflow : hidden;
+  height:240px;
+}
+
+.list-post {
+  list-style: none;
+}
+
+.bottompost {
+  background-color: #333333;
+  padding: .35em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.numbers {
+  color:#cccccc;
+  font-size: 16px;
+  margin-right : 20px;
+}
+
+.icon-like {
+  height :22px;
+  margin-left:4px;
+  margin-right: 8px;
+}
+
+.icon-com {
+  height :24px;
+  margin-right:8px;
 }
