@@ -18,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $posts = Post::where('privacy', '=', 0)
             ->orderBy('created_at', 'asc')
             ->take(16)
@@ -119,9 +120,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view('post', ['post' => $post]);
+        return view('post', ['post' => $post, 'user' => $user]);
     }
 
     /**
@@ -132,7 +134,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post/edit', compact('post'));
     }
 
     /**
@@ -144,7 +146,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'content' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('post/'.$post['id'].'/editer')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $post['title']=request('title');
+        $post['content']=request('content');
+        $post->save();
+        return redirect('/post/'.$post['id']);
     }
 
     /**
@@ -161,5 +177,15 @@ class PostController extends Controller
     public function publish()
     {
         return view('publierProfil');
+    }
+
+    public function softDelete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+
+        session()->flash('message', 'Votre post a bien été supprimé');
+
+        return redirect()->route('front_categories');
     }
 }

@@ -18,7 +18,7 @@ class UserController extends Controller
     public function myprofile()
     {
         $user = Auth::user();
-        $posts = Post::all();
+        $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
 
         return view('myprofile', ['user' => $user], ['posts' => $posts]);
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
     public function profile($id)
     {
         $user = User::findOrFail($id);
-        $posts = Post::all();
+        $posts = Post::where('privacy', 0)->orderBy('created_at', 'asc')->get();
         return view('profile', ['user' => $user], ['posts' => $posts]);
     }
 
