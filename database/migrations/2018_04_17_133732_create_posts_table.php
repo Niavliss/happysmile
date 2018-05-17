@@ -17,15 +17,15 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->mediumText('content');
+            $table->longText('content');
             $table->enum('type_media',['blague','image','video']);
-            $table->smallInteger('lemonlike')->default(0);
             $table->boolean('flag')->default(0);
             $table->boolean('privacy')->default(0);
             $table->softDeletes();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->index('type_media');
         });
     }
 
