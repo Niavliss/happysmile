@@ -22,7 +22,14 @@ abstract class AbstractModel extends Model
 
     const DEFAULT_LIMIT = 16;
 
+    const PRIVACY = [
+        Post::QUERY_COLUMN => 'privacy',
+        Post::QUERY_OPERATOR => '=',
+        Post::QUERY_VALUE => 0,
+    ];
+
     protected $perPage = 16;
+
     /**
      * Find posts.
      *
@@ -39,8 +46,7 @@ abstract class AbstractModel extends Model
 
         if ($limit !== null) {
             $qb->take($limit);
-        }
-        else {
+        } else {
             $qb->take(self::DEFAULT_LIMIT);
         }
 
@@ -69,4 +75,35 @@ abstract class AbstractModel extends Model
         return $qb->get();
     }
 
+    public static function findByAll()
+    {
+        $posts = Post::findBy(
+            [
+                Post::PRIVACY
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]);
+        return $posts;
+    }
+
+    public static function findByCategorie($categorie)
+    {
+        $posts = Post::findBy(
+            [
+                Post::PRIVACY,
+                [
+                    Post::QUERY_COLUMN => 'type_media',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => $categorie,
+                ],
+
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]);
+        return $posts;
+    }
 }

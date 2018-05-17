@@ -20,18 +20,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::findBy(
-            [
-                [
-                    Post::QUERY_COLUMN => 'privacy',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 0,
-                ]
-            ],
-            [
-                Post::FIELD_TITLE => Post::ORDER_ASC,
-                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
-            ]);
+        $posts = Post::findByAll();
 
         return view('categories', ['posts' => $posts]);
     }
@@ -46,25 +35,7 @@ class PostController extends Controller
      */
     public function jokes()
     {
-        $jokes = Post::findBy(
-            [
-                [
-                    Post::QUERY_COLUMN => 'privacy',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 0,
-                ],
-                [
-                    Post::QUERY_COLUMN => 'type_media',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 'blague',
-                ],
-
-            ],
-            [
-                Post::FIELD_TITLE => Post::ORDER_ASC,
-                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
-            ]
-        );
+        $jokes = Post::findByCategorie('blague');
 
         return view('categories/blagues', ['jokes' => $jokes]);
     }
@@ -75,25 +46,7 @@ class PostController extends Controller
      */
     public function images()
     {
-        $pics = Post::findBy(
-            [
-                [
-                    Post::QUERY_COLUMN => 'privacy',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 0,
-                ],
-                [
-                    Post::QUERY_COLUMN => 'type_media',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 'image',
-                ],
-
-            ],
-            [
-                Post::FIELD_TITLE => Post::ORDER_ASC,
-                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
-            ]
-        );
+        $pics = Post::findByCategorie('image');
 
         return view('categories/images', ['pics' => $pics]);
     }
@@ -103,25 +56,7 @@ class PostController extends Controller
      */
     public function videos()
     {
-        $videos = Post::findBy(
-            [
-                [
-                    Post::QUERY_COLUMN => 'privacy',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 0,
-                ],
-                [
-                    Post::QUERY_COLUMN => 'type_media',
-                    Post::QUERY_OPERATOR => '=',
-                    Post::QUERY_VALUE => 'video',
-                ],
-
-            ],
-            [
-                Post::FIELD_TITLE => Post::ORDER_ASC,
-                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
-            ]
-        );
+        $videos = Post::findByCategorie('video');
 
         return view('categories/videos', ['videos' => $videos]);
     }
