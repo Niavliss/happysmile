@@ -50,7 +50,7 @@
                             <a href="{{ url('post/'.$post->id) }}"><h4 class="card-title">{{$post->title}}</h4></a>
                             <ul class="list-post">
                                 <li><span class="card-subtitle text-muted"> Type :</span> <a
-                                            href="{{ url('categories/'.$post->type_media) .'s' }}"
+                                            href="{{ url('categories/'.$post->type_media) }}"
                                             class="card-link">{{$post->type_media}}</a></li>
                                 <li><span class="card-subtitle text-muted mb-2">Auteur :</span> <a
                                             href="{{ url('profil/'.$post->user->id) }}">{{$post->user->name}}</a></li>
