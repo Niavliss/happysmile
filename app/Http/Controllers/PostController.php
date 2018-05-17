@@ -20,7 +20,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::findByAll();
+        $posts = Post::with('user')->latest()->orderBy('lemonlike','desc')->get();
 
         return view('categories', ['posts' => $posts]);
     }
@@ -31,35 +31,20 @@ class PostController extends Controller
     }
 
     /**
+     * Display a listing of the resource by type_media
+     * @param $typemedia
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function jokes()
+    public function sortByTypeMedia($typemedia)
     {
-        $jokes = Post::findByCategorie('blague');
+        $posts = Post::with('user')
+            ->where('type_media','=',$typemedia)
+            ->orderBy('lemonlike','desc')
+            ->get();
 
-        return view('categories/blagues', ['jokes' => $jokes]);
+        return view('categories', ['posts' => $posts]);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     *
-     */
-    public function images()
-    {
-        $pics = Post::findByCategorie('image');
-
-        return view('categories/images', ['pics' => $pics]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function videos()
-    {
-        $videos = Post::findByCategorie('video');
-
-        return view('categories/videos', ['videos' => $videos]);
-    }
 
     /**
      * Show the form for creating a new resource.

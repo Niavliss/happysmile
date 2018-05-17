@@ -12,26 +12,26 @@
             <a href="{{ route('front_categories') }}">
                 <button class="btn btn-warning tout">Tout</button>
             </a>
-            <a href="{{ route('front_jokes') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'blague']) }}">
                 <button class="btn btn-warning ">Blagues</button>
             </a>
-            <a href="{{ route('front_images') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'image']) }}">
                 <button class="btn btn-warning ">Images</button>
             </a>
-            <a href="{{ route('front_videos') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'video']) }}">
                 <button class="btn btn-warning ">Videos</button>
             </a>
         @else
             <a href="{{ route('front_categories') }}">
                 <button class="btn btn-warning tout">Tout</button>
             </a>
-            <a href="{{ route('front_jokes') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'blague']) }}">
                 <button class="btn btn-warning ">Blagues</button>
             </a>
-            <a href="{{ route('front_images') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'image']) }}">
                 <button class="btn btn-warning ">Images</button>
             </a>
-            <a href="{{ route('front_videos') }}">
+            <a href="{{ route('front_typemedia', ['typemedia' => 'video']) }}">
                 <button class="btn btn-warning ">Videos</button>
             </a>
             <a href="{{ route('front_categories_publish') }}">

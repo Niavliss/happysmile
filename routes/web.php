@@ -7,12 +7,14 @@ Route::get('/', 'HomeController@home')->name('front_home');
 Route::get('/post/{id}', 'PostController@show')->name('front_post');
 
 Route::get('/categories', 'PostController@index')->name('front_categories');
-Route::get('/categories/blagues', 'PostController@jokes')->name('front_jokes');
-Route::get('/categories/images', 'PostController@images')->name('front_images');
-Route::get('/categories/videos', 'PostController@videos')->name('front_videos');
 
 Route::get('/categories/publier', 'PostController@create')->name('front_categories_publish');
 Route::post('/categories/publier', 'PostController@store')->name('front_categories_store');
+
+Route::get('/categories/{typemedia}', 'PostController@sortByTypeMedia')->name('front_typemedia');
+
+
+
 
 Route::get('/post/{post}/editer','PostController@edit')->name('front_post_edit');
 Route::get('/post/{id}/supprimer','PostController@softDelete')->name('front_post_delete');
