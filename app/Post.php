@@ -11,10 +11,6 @@ class Post extends Model
     use Sluggable;
     use SoftDeletes;
 
-    const FIELD_CREATED_AT = 'created_at';
-    const FIELD_TITLE = 'title';
-    const FIELD_PRIVACY = 'privacy';
-
     public function sluggable()
     {
         return [
@@ -30,7 +26,13 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+
     }
 
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,10 @@ class User extends Authenticatable
     ];
 
     public function posts() {
-        return $this->hasMany('App\Post','post_id');
+        return $this->hasMany('App\Post');
+    }
+
+    public function comments() {
+        return $this->hasMany('App\Comment');
     }
 }
