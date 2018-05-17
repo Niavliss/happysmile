@@ -20,10 +20,18 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::findByAll([
-            Post::FIELD_TITLE => Post::ORDER_ASC,
-            Post::FIELD_CREATED_AT => Post::ORDER_DESC,
-        ]);
+        $posts = Post::findBy(
+            [
+                [
+                    Post::QUERY_COLUMN => 'privacy',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 0,
+                ]
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]);
 
         return view('categories', ['posts' => $posts]);
     }
@@ -38,21 +46,82 @@ class PostController extends Controller
      */
     public function jokes()
     {
-        $jokes = Post::findByTypeMedia('blague', [Post::FIELD_TITLE => Post::ORDER_ASC],4);
+        $jokes = Post::findBy(
+            [
+                [
+                    Post::QUERY_COLUMN => 'privacy',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 0,
+                ],
+                [
+                    Post::QUERY_COLUMN => 'type_media',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 'blague',
+                ],
+
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]
+        );
 
         return view('categories/blagues', ['jokes' => $jokes]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     */
     public function images()
     {
-        $pics = Post::findByTypeMedia('image');
+        $pics = Post::findBy(
+            [
+                [
+                    Post::QUERY_COLUMN => 'privacy',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 0,
+                ],
+                [
+                    Post::QUERY_COLUMN => 'type_media',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 'image',
+                ],
+
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]
+        );
 
         return view('categories/images', ['pics' => $pics]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function videos()
     {
-        $videos = Post::findByTypeMedia('video');
+        $videos = Post::findBy(
+            [
+                [
+                    Post::QUERY_COLUMN => 'privacy',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 0,
+                ],
+                [
+                    Post::QUERY_COLUMN => 'type_media',
+                    Post::QUERY_OPERATOR => '=',
+                    Post::QUERY_VALUE => 'video',
+                ],
+
+            ],
+            [
+                Post::FIELD_TITLE => Post::ORDER_ASC,
+                Post::FIELD_CREATED_AT => Post::ORDER_DESC,
+            ]
+        );
 
         return view('categories/videos', ['videos' => $videos]);
     }

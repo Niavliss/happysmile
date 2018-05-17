@@ -9,13 +9,10 @@
 namespace App;
 
 
-use App\Utils\Strings;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class AbstractModel extends Model
 {
-
-
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
 
@@ -25,6 +22,7 @@ abstract class AbstractModel extends Model
 
     const DEFAULT_LIMIT = 16;
 
+    protected $perPage = 16;
     /**
      * Find posts.
      *
@@ -41,6 +39,9 @@ abstract class AbstractModel extends Model
 
         if ($limit !== null) {
             $qb->take($limit);
+        }
+        else {
+            $qb->take(self::DEFAULT_LIMIT);
         }
 
         // Add Queries
@@ -66,77 +67,6 @@ abstract class AbstractModel extends Model
         }
 
         return $qb->get();
-    }
-
-    /**
-     * @param string $method
-     * @param array $parameters
-     * @return array|bool|mixed
-     * @throws \Exception
-     */
-    public static function __callStatic($method, $parameters)
-    {
-        if (preg_match('/findBy([\w].*)/', $method, $match)) {
-            $string = $match[1];
-            if (preg_match('/All/', $string, $match)) {
-
-                $sorts = [];
-
-                if (array_key_exists(0, $parameters)) {
-                    $sorts = $parameters[0];
-                }
-
-                return self::findBy(
-                    [],
-                    $sorts
-                );
-            } else if (preg_match('/([\w].*)/', $string, $match)) {
-                /** @var string $column */
-                $column = Strings::fromCamelCase($match[1]);
-
-                if (!array_key_exists(0, $parameters)) {
-                    return false;
-                }
-
-                $value = null;
-
-                if (array_key_exists(0, $parameters)) {
-                    $value = $parameters[0];
-                }
-
-                $sorts = [];
-
-                if (array_key_exists(1, $parameters)) {
-                    $sorts = $parameters[1];
-                    if (!is_array($sorts)) {
-                        throw new \Exception("Parameters 2 must be an array.");
-                    }
-                }
-
-                $limit = self::DEFAULT_LIMIT;
-                if (array_key_exists(2, $parameters)) {
-                    $limit = $parameters[2];
-                    if (!is_numeric($limit)) {
-                        throw new \Exception("Parameters 3 must be an integer or null.");
-                    }
-                }
-
-                return self::findBy(
-                    [
-                        [
-                            Post::QUERY_COLUMN => $column,
-                            Post::QUERY_OPERATOR => '=',
-                            Post::QUERY_VALUE => $value,
-                        ],
-                    ],
-                    $sorts,
-                    $limit
-                );
-            }
-
-        } else {
-            return self::__callStatic($method, $parameters);
-        }
     }
 
 }
