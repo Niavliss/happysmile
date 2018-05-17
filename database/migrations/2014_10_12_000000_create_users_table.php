@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('pic_path')->default('');
             $table->rememberToken();
             $table->softDeletes();
-            $table->smallInteger('grouptype');
+            $table->smallInteger('grouptype')->default(0);;
             $table->timestamps();
             $table->index(['birth','name']);
         });

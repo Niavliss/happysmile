@@ -20,7 +20,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::with('user')->latest()->orderBy('lemonlike','desc')->get();
+        $posts = Post::with('user')->latest()->orderBy('title','desc')->get();
 
         return view('categories', ['posts' => $posts]);
     }
@@ -39,7 +39,6 @@ class PostController extends Controller
     {
         $posts = Post::with('user')
             ->where('type_media','=',$typemedia)
-            ->orderBy('lemonlike','desc')
             ->get();
 
         return view('categories', ['posts' => $posts]);
