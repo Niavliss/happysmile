@@ -8,7 +8,12 @@
         <img src="{{ asset('storage/' . $user->pic_path) }}">
         <h2>{{$user->pseudo}}</h2>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>
-            <li><button class="btn btn-warning btn-sm">Demander en amis</button></li>
+            <li>
+                <form method="POST" action="">
+                    @csrf
+                    <button type="submit" class="btn btn-warning btn-sm" name="friendrequest">Demander en ami</button>
+                </form>
+            </li>
         </ul>
     </div>
     <div class="container" id="cont_body_profil">

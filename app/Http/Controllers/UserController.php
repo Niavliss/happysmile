@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -19,8 +20,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
-
-        return view('myprofile', ['user' => $user], ['posts' => $posts]);
+        $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
+//        dd($demands);
+        return view('myprofile', ['user' => $user, 'posts' => $posts, 'demands' => $demands]);
     }
 
     public function profile($id)
@@ -99,5 +101,16 @@ class UserController extends Controller
         $request->session()->flash('notification', 'Mot de passe changé!');
 
         return view('settings', ['user' => $user]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function askFriend($id) {
+        $user = Auth::user();
+        $user->hasHappyFriend()->attach($id);
+        return back();
     }
 }
