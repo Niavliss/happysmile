@@ -6,7 +6,7 @@
     <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
         <img class="img-fluid" src="{{ asset('storage/' . $user->pic_path) }}">
-        <h2>{{$user->name}}</h2>
+        <h2>{{$user->pseudo}}</h2>
         <ul><a href="/publier"><button class="btn btn-warning btn-sm">Publier</button></a>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>
             <li><button class="btn btn-warning btn-sm">Messages</button></li>
@@ -26,8 +26,8 @@
                     </div>
                     <div class="bottompost">
                         <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
-                        <span class="numbers"> {{$post->lemonlike}} </span>
-                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="lemonlike">
+                        <span class="numbers"> </span>
+                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
                         <span class="numbers"> </span>
                     </div>
                 </div>

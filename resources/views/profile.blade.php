@@ -6,7 +6,7 @@
     <div id="cont_fiche_profil"></div>
     <div id="menu_profil">
         <img src="{{ asset('storage/' . $user->pic_path) }}">
-        <h2>{{$user->name}}</h2>
+        <h2>{{$user->pseudo}}</h2>
             <li><button class="btn btn-warning btn-sm">Amis</button></li>
             <li><button class="btn btn-warning btn-sm">Demander en amis</button></li>
         </ul>

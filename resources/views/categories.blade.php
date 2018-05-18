@@ -53,7 +53,7 @@
                                             href="{{ url('categories/'.$post->type_media) }}"
                                             class="card-link">{{$post->type_media}}</a></li>
                                 <li><span class="card-subtitle text-muted mb-2">Auteur :</span> <a
-                                            href="{{ url('profil/'.$post->user->id) }}">{{$post->user->name}}</a></li>
+                                            href="{{ url('profil/'.$post->user->id) }}">{{$post->user->pseudo}}</a></li>
                                 <li>
                                     <span class="card-subtitle text-muted mb-2">Date de création :</span> {{$post->created_at->format('d-m-Y')}}
                                 </li>
@@ -62,8 +62,8 @@
                         </div>
                         <div class="bottompost">
                             <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
-                            <span class="numbers"> {{$post->lemonlike}} </span>
-                            <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="lemonlike">
+                            <span class="numbers"> </span>
+                            <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
                             <span class="numbers"> </span>
                         </div>
                     </div>

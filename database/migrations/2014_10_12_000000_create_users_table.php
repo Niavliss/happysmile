@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('name')->unique();
+            $table->char('pseudo')->unique();
             $table->char('email')->unique();
             $table->string('password');
             $table->date('birth');
@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->smallInteger('grouptype')->default(0);;
             $table->timestamps();
-            $table->index(['birth','name']);
+            $table->index(['birth','pseudo']);
         });
     }
 
