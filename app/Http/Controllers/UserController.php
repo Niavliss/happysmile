@@ -20,20 +20,21 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
-        $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
-        $tablelength = $demands->count();
-        $friendstables = [];
-        $friends= null;
-        if ($tablelength > 0) {
-            foreach ($demands as $demand) {
-
-                array_push($friendstables, $demand->user_id);
-
-            };
-
-            $friends = User::whereIn('id', $friendstables)->with('hasHappyFriend')->get();
-        };
-        return view('myprofile', ['user' => $user, 'posts' => $posts, 'friends' => $friends, 'demands']);
+//
+//        $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
+//        $tablelength = $demands->count();
+//        $friendstables = [];
+//        $targets = null;
+//        if ($tablelength > 0) {
+//            foreach ($demands as $demand) {
+//
+//                array_push($friendstables, $demand->user_id);
+//
+//            };
+//
+//            $targets = User::whereIn('id', $friendstables)->get();
+//        };
+        return view('myprofile', ['user' => $user, 'posts' => $posts]);
     }
 
     public function profile($id)
@@ -122,7 +123,7 @@ class UserController extends Controller
     public function askFriend($id)
     {
         $user = Auth::user();
-        $user->hasHappyFriend()->attach($id);
+        $user->friends()->attach($id);
         return back();
     }
 
@@ -130,17 +131,16 @@ class UserController extends Controller
     {
         $answer = $request->request->get('answer');
         $target_user_id = $request->request->get('target_user_id');
-        $target_user = User::where('id',$target_user_id)->first();
-        $happyfriends = DB::table('friends')->where('user_id','=', $target_user_id)
-            ->where('target_user_id','=', Auth::id());
-        if ($answer == 1) {
-            $happyfriends->update(['status'=> 1]);
+        $happyfriends = DB::table('friends')->where('user_id', '=', $target_user_id)
+            ->where('target_user_id', '=', Auth::id());
+//        dd($happyfriends);
+        if ($answer === "yes") {
+            $happyfriends->update(['status' => "1"]);
 
-            $target_user->isHappyFriend()->attach(Auth::id());
             return back();
-        }
-        else {
-            $happyfriends->update(['status'=> 2]);
+        } elseif ($answer === "no") {
+
+            $happyfriends->update(['status' => "2"]);
 
             return back();
         }

@@ -26,25 +26,23 @@
             <div>
                 <h2> Mes amis </h2>
 
-                @if($friends!=null)
-                    <ul class="list-unstyled">
-                        @foreach($friends as $friend)
+                <ul class="list-unstyled">
+                    @dd($user->friendsOn())
+                        @foreach ($user->friends as $friend)
 
-                            <li>{{ $friend->pseudo }}
+                            <li>{{$friend->pseudo}} status : {{$friend->pivot->status}}
                                 <form method="POST" action="">
                                     @csrf
-                                    <input type="hidden" name="target_user_id" value ="{{$friend->id}}">
-                                    <button type="submit" class="btn btn-warning" name="answer" value="1">oui</button>
-                                    <button type="submit" class="btn btn-warning" name="answer" value="2">non</button>
+                                    <input type="hidden" name="target_user_id" value="{{$friend->id}}">
+                                    <button type="submit" class="btn btn-warning" name="answer" value="yes">oui
+                                    </button>
+                                    <button type="submit" class="btn btn-warning" name="answer" value="no">non
+                                    </button>
                                 </form>
                             </li>
-
                         @endforeach
-                    </ul>
-                @else
-                    coucou bordel de merde !
-                @endif
 
+                </ul>
             </div>
             @foreach ($posts as $post)
                 <div class="col-12">
