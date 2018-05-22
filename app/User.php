@@ -36,12 +36,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
-    public function hasHappyFriend() {
+    public function isHappyFriend() {
         return $this->belongsToMany('App\User','friends','target_user_id','user_id')
             ->withPivot('status');
     }
 
-    public function isHappyFriend() {
+    public function hasHappyFriend() {
         return $this->belongsToMany('App\User','friends','user_id','target_user_id')
             ->withPivot('status');
     }

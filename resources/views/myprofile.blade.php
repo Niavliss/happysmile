@@ -26,16 +26,22 @@
             <div>
                 <h2> Mes amis </h2>
 
-                @if($demands->count() >0)
-                    <ul>
-                        @foreach($demands as $demand)
+                @if($friends!=null)
+                    <ul class="list-unstyled">
+                        @foreach($friends as $friend)
 
-                            <li>{{$demand->user_id}}</li>
-                            <li>{{$demand-}}</li>
+                            <li>{{ $friend->pseudo }}
+                                <form method="POST" action="">
+                                    @csrf
+                                    <input type="hidden" name="target_user_id" value ="{{$friend->id}}">
+                                    <button type="submit" class="btn btn-warning" name="answer" value="1">oui</button>
+                                    <button type="submit" class="btn btn-warning" name="answer" value="2">non</button>
+                                </form>
+                            </li>
 
                         @endforeach
                     </ul>
-                    @else
+                @else
                     coucou bordel de merde !
                 @endif
 

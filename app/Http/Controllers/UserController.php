@@ -21,8 +21,19 @@ class UserController extends Controller
         $user = Auth::user();
         $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
         $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
-//        dd($demands);
-        return view('myprofile', ['user' => $user, 'posts' => $posts, 'demands' => $demands]);
+        $tablelength = $demands->count();
+        $friendstables = [];
+        $friends= null;
+        if ($tablelength > 0) {
+            foreach ($demands as $demand) {
+
+                array_push($friendstables, $demand->user_id);
+
+            };
+
+            $friends = User::whereIn('id', $friendstables)->with('hasHappyFriend')->get();
+        };
+        return view('myprofile', ['user' => $user, 'posts' => $posts, 'friends' => $friends, 'demands']);
     }
 
     public function profile($id)
@@ -89,7 +100,7 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        if (! Hash::check($request->input('password'), $user->password)) {
+        if (!Hash::check($request->input('password'), $user->password)) {
             return back()
                 ->withErrors(['password' => 'Mot de passe actuel invalide'])
                 ->withInput();
@@ -108,9 +119,30 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function askFriend($id) {
+    public function askFriend($id)
+    {
         $user = Auth::user();
         $user->hasHappyFriend()->attach($id);
         return back();
+    }
+
+    public function friendManager(Request $request)
+    {
+        $answer = $request->request->get('answer');
+        $target_user_id = $request->request->get('target_user_id');
+        $target_user = User::where('id',$target_user_id)->first();
+        $happyfriends = DB::table('friends')->where('user_id','=', $target_user_id)
+            ->where('target_user_id','=', Auth::id());
+        if ($answer == 1) {
+            $happyfriends->update(['status'=> 1]);
+
+            $target_user->isHappyFriend()->attach(Auth::id());
+            return back();
+        }
+        else {
+            $happyfriends->update(['status'=> 2]);
+
+            return back();
+        }
     }
 }
