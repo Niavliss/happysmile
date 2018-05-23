@@ -47,38 +47,50 @@ class User extends Authenticatable
             ->withPivot('status')->withTimestamps();
     }
 
-    public function myFriends(){
-        return DB::table('users')
-            ->join('friends', 'users.id', '=', 'friends.target_user_id')
-            ->where('friends.user_id', $this->id)
-            ->get();
+//    public function myFriends(){
+//        return DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.target_user_id')
+//            ->where('friends.user_id', $this->id)
+//            ->get();
+//    }
+//
+//    public function myFriendsOnDemand(){
+//        return DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.user_id')
+//            ->where('friends.target_user_id', $this->id)
+//            ->where('friends.status', '0')
+//            ->get();
+//    }
+
+    public function allFriendsValid()
+    {
+        $firsts = $this->friends;
+
+        $seconds = $this->friendsOn;
+
+        $allfriends =$firsts->merge($seconds)->where('pivot.status','1')->sortByDesc('pivot.updated_at');
+
+        return $allfriends;
     }
 
-    public function myFriendsOnDemand(){
-        return DB::table('users')
-            ->join('friends', 'users.id', '=', 'friends.user_id')
-            ->where('friends.target_user_id', $this->id)
-            ->where('friends.status', '0')
-            ->get();
-    }
-
-    public function allFriendsValid(){
-        $first = DB::table('users')
-            ->join('friends', 'users.id', '=', 'friends.target_user_id')
-            ->where('friends.user_id', $this->id)
-            ->where('friends.status', '1')
-            ->orderBy('friends.created_at', 'desc');
-
-        $users =DB::table('users')
-            ->join('friends', 'users.id', '=', 'friends.user_id')
-            ->where('friends.target_user_id', $this->id)
-            ->where('friends.status', '1')
-            ->orderBy('friends.created_at', 'desc')
-            ->union($first)
-            ->get();
-
-        return $users;
-    }
+//
+//    public function allFriendsValid(){
+//        $first = DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.target_user_id')
+//            ->where('friends.user_id', $this->id)
+//            ->where('friends.status', '1')
+//            ->orderBy('friends.created_at', 'desc');
+//
+//        $users =DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.user_id')
+//            ->where('friends.target_user_id', $this->id)
+//            ->where('friends.status', '1')
+//            ->orderBy('friends.created_at', 'desc')
+//            ->union($first)
+//            ->get();
+//
+//        return $users;
+//    }
 
 
 
