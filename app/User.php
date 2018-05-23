@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -28,27 +29,70 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts()
-    {
+    public function posts() {
         return $this->hasMany('App\Post');
     }
 
-    public function comments()
-    {
+    public function comments() {
         return $this->hasMany('App\Comment');
     }
 
-    public function hasHappyFriend()
-    {
-        return $this->belongsToMany('App\User', 'friends', 'target_user_id', 'user_id')
-            ->withPivot('status');
+    public function friends() {
+        return $this->belongsToMany(User::class,'friends','user_id','target_user_id')
+            ->withPivot('status')->withTimestamps();
     }
 
-    public function isHappyFriend()
-    {
-        return $this->belongsToMany('App\User', 'friends', 'user_id', 'target_user_id')
-            ->withPivot('status');
+    public function friendsOn() {
+        return $this->belongsToMany(User::class,'friends','target_user_id','user_id')
+            ->withPivot('status')->withTimestamps();
     }
+
+//    public function myFriends(){
+//        return DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.target_user_id')
+//            ->where('friends.user_id', $this->id)
+//            ->get();
+//    }
+//
+//    public function myFriendsOnDemand(){
+//        return DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.user_id')
+//            ->where('friends.target_user_id', $this->id)
+//            ->where('friends.status', '0')
+//            ->get();
+//    }
+
+    public function allFriendsValid()
+    {
+        $firsts = $this->friends;
+
+        $seconds = $this->friendsOn;
+
+        $allfriends =$firsts->merge($seconds)->where('pivot.status','1')->sortByDesc('pivot.updated_at');
+
+        return $allfriends;
+    }
+
+//
+//    public function allFriendsValid(){
+//        $first = DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.target_user_id')
+//            ->where('friends.user_id', $this->id)
+//            ->where('friends.status', '1')
+//            ->orderBy('friends.created_at', 'desc');
+//
+//        $users =DB::table('users')
+//            ->join('friends', 'users.id', '=', 'friends.user_id')
+//            ->where('friends.target_user_id', $this->id)
+//            ->where('friends.status', '1')
+//            ->orderBy('friends.created_at', 'desc')
+//            ->union($first)
+//            ->get();
+//
+//        return $users;
+//    }
+
+
 
 
 }

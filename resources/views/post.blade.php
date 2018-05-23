@@ -11,7 +11,13 @@
                 <div class="card txt post">
                     <div class="card-body">
                         <img class="imgprofil" src="{{ asset('storage/' . $post->user->pic_path) }}">
-                        <a href="{{ url('profil/'.$post->user->id) }}">{{$post->user->pseudo}}</a>
+                        <a href="
+                        @if($user->id!=$post->user->id)
+                            {{ url('/profil/'.$post->user->id) }}
+                        @else
+                            {{ url('/mon-profil/') }}
+                        @endif
+                        ">{{$post->user->pseudo}}</a>
                         <h2 class="card-title titlepost mr-2 ">{{ $post->title }}</h2>
                         <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
                         <p class="card-text content">{{ $post->content }} </p>

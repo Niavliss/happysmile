@@ -19,10 +19,10 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        $user = Auth::user();
         $posts = Post::with('user')->latest()->orderBy('title','desc')->get();
 
-        return view('categories', ['posts' => $posts]);
+        return view('categories', ['posts' => $posts,'user' => $user]);
     }
 
     public function __construct()
