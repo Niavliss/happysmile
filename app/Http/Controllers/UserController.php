@@ -20,20 +20,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
-//
-//        $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
-//        $tablelength = $demands->count();
-//        $friendstables = [];
-//        $targets = null;
-//        if ($tablelength > 0) {
-//            foreach ($demands as $demand) {
-//
-//                array_push($friendstables, $demand->user_id);
-//
-//            };
-//
-//            $targets = User::whereIn('id', $friendstables)->get();
-//        };
+
         return view('myprofile', ['user' => $user, 'posts' => $posts]);
     }
 
@@ -52,8 +39,9 @@ class UserController extends Controller
 
     public function members()
     {
+        $user = Auth::user();
         $profils = User::orderBy('created_at', 'asc')->take(16)->get();
-        return view('members', ['profils' => $profils]);
+        return view('members', ['profils' => $profils,'user' => $user]);
     }
 
     public function publish(Request $request)
@@ -68,17 +56,6 @@ class UserController extends Controller
 
         return view('publish');
     }
-//
-//    public function publish(Request $request)
-//    {
-//        return Post::create([
-//            'title' => $request->input(),
-//            'content' => $request['content'],
-//            'privacy' => $request['privacy'],
-//        ]);
-//
-//        $post = new Post()
-//    }
 
     public function uploadImg(Request $request)
     {
