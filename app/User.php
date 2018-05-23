@@ -28,21 +28,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany('App\Post');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
     }
 
-    public function hasHappyFriend() {
-        return $this->belongsToMany('App\User','friends','target_user_id','user_id')
+    public function hasHappyFriend()
+    {
+        return $this->belongsToMany('App\User', 'friends', 'target_user_id', 'user_id')
             ->withPivot('status');
     }
 
-    public function isHappyFriend() {
-        return $this->belongsToMany('App\User','friends','user_id','target_user_id')
+    public function isHappyFriend()
+    {
+        return $this->belongsToMany('App\User', 'friends', 'user_id', 'target_user_id')
             ->withPivot('status');
     }
 

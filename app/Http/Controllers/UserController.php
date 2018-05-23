@@ -108,7 +108,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function askFriend($id) {
+    public function askFriend($id)
+    {
         $user = Auth::user();
         $user->hasHappyFriend()->attach($id);
         return back();
