@@ -15,7 +15,7 @@ class CreateFriendsTable extends Migration
     {
         Schema::create('friends', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status',[0,1,2]);
+            $table->enum('status', [0,1,2]);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('target_user_id');

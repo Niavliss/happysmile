@@ -21,8 +21,11 @@ Route::get('/post/{id}/supprimer','PostController@softDelete')->name('front_post
 Route::put('/post/{post}','PostController@update')->name('front_post_update');
 
 Route::get('/mon-profil', 'UserController@myprofile')->name('front_profile');
+
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show');
 Route::post('/profil/{id}', 'UserController@askfriend')->name('front_profile_friend');
+
+Route::post('/mon-profil', 'UserController@friendmanager')->name('front_profile_response');
 
 Route::get('/publier', 'PostController@create')->name('front_profile_publish');
 Route::post('/publier', 'PostController@store')->name('front_profile_store');
@@ -39,6 +42,11 @@ Route::get('/a-propos', 'OurCompanyController@about')->name('about');
 Route::get('/faq', 'SupportController@faq')->name('faq');
 Route::get('/signaler-un-probleme', 'SupportController@reportanissue')->name('reportanissue');
 
+Route::get('/admin', 'Admin\AdminController@adminAccess')->name('admin_page');
+Route::get('/admin/users', 'Admin\AdminController@showUsers')->name('users_admin_page');
+Route::get('/admin/posts', 'Admin\AdminController@showPosts')->name('posts_admin_page');
+Route::get('/admin/commentaries', 'Admin\AdminController@showCommentaries')->name('commentaries_admin_page');
+Route::get('/admin/feedbacks', 'Admin\AdminController@showFeebacks')->name('feedbacks_admin_page');
 
 //TEST SETTINGS :
 Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
