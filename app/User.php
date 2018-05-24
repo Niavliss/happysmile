@@ -29,21 +29,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany('App\Post');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
     }
 
-    public function friends() {
-        return $this->belongsToMany(User::class,'friends','user_id','target_user_id')
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'target_user_id')
             ->withPivot('status')->withTimestamps();
     }
 
-    public function friendsOn() {
-        return $this->belongsToMany(User::class,'friends','target_user_id','user_id')
+    public function friendsOn()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'target_user_id', 'user_id')
             ->withPivot('status')->withTimestamps();
     }
 
@@ -68,7 +72,7 @@ class User extends Authenticatable
 
         $seconds = $this->friendsOn;
 
-        $allfriends =$firsts->merge($seconds)->where('pivot.status','1')->sortByDesc('pivot.updated_at');
+        $allfriends = $firsts->merge($seconds)->where('pivot.status', '1')->sortByDesc('pivot.updated_at');
 
         return $allfriends;
     }
@@ -83,11 +87,10 @@ class User extends Authenticatable
 
         $seconds = $this->friendsOn;
 
-        $allfriends =$firsts->merge($seconds);
+        $allfriends = $firsts->merge($seconds);
 
         foreach ($allfriends as $allfriend) {
-            if ($user->id === $allfriend->id)
-            {
+            if ($user->id === $allfriend->id) {
                 $isfriend = 1;
                 return $isfriend;
             }
@@ -113,8 +116,6 @@ class User extends Authenticatable
 //
 //        return $users;
 //    }
-
-
 
 
 }

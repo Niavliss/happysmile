@@ -45,11 +45,23 @@ Route::get('/a-propos', 'OurCompanyController@about')->name('about');
 Route::get('/faq', 'SupportController@faq')->name('faq');
 Route::get('/signaler-un-probleme', 'SupportController@reportanissue')->name('reportanissue');
 
-Route::get('/admin', 'Admin\AdminController@adminAccess')->name('admin_page');
-Route::get('/admin/users', 'Admin\AdminController@showUsers')->name('users_admin_page');
-Route::get('/admin/posts', 'Admin\AdminController@showPosts')->name('posts_admin_page');
-Route::get('/admin/commentaries', 'Admin\AdminController@showCommentaries')->name('commentaries_admin_page');
-Route::get('/admin/feedbacks', 'Admin\AdminController@showFeebacks')->name('feedbacks_admin_page');
+Route::prefix('admin')->group(function () {
+        Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'Admin\UserController@index')->name('admin.user.index');
+        Route::get('/create', 'Admin\UserController@create')->name('admin.user.create');
+        Route::post('/create', 'Admin\UserController@store')->name('admin.user.store');
+        Route::get('/edit/{user}', 'Admin\UserController@edit')->name('admin.user.edit');
+        Route::put('/edit/{user}', 'Admin\UserController@update')->name('admin.user.update');
+        Route::get('/{user}', 'Admin\UserController@show')->name('admin.user.show');
+    });
+
+//    Route::get('/', 'Admin\AdminController@adminAccess')->name('admin_page');
+//    Route::get('/users', 'Admin\AdminController@showUsers')->name('users_admin_page');
+//    Route::get('/posts', 'Admin\AdminController@showPosts')->name('posts_admin_page');
+//    Route::get('/commentaries', 'Admin\AdminController@showCommentaries')->name('commentaries_admin_page');
+//    Route::get('/feedbacks', 'Admin\AdminController@showFeebacks')->name('feedbacks_admin_page');
+});
 
 //TEST SETTINGS :
 Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
