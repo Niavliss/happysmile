@@ -32,17 +32,21 @@ Route::post('/modification-mot-de-passe', 'UserController@uploadPassword')->name
 Route::post('/modification-email', 'UserController@uploadEmail')->name('upload_email');
 Route::get('/membres', 'UserController@members')->name('front_members');
 
-Route::get('/cgu', 'OurCompany@cgu')->name('cgu');
-Route::get('/politique-de-confidentialite', 'OurCompany@privacypolicy')->name('privacypolicy');
-Route::get('/a-propos', 'OurCompany@about')->name('about');
+Route::get('/cgu', 'OurCompanyController@cgu')->name('cgu');
+Route::get('/politique-de-confidentialite', 'OurCompanyController@privacypolicy')->name('privacypolicy');
+Route::get('/a-propos', 'OurCompanyController@about')->name('about');
 
-Route::get('/faq', 'Support@faq')->name('faq');
-Route::get('/signaler-un-probleme', 'Support@reportanissue')->name('reportanissue');
+Route::get('/faq', 'SupportController@faq')->name('faq');
+Route::get('/signaler-un-probleme', 'SupportController@reportanissue')->name('reportanissue');
 
 
 //TEST SETTINGS :
 Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
 Route::post('/modifier-adresse-email', 'UserController@uploadEmail')->name('upload_email');
+
+//MESSAGERIE PRIVEE :
+Route::get('/messagerie', 'MessageController@index')->name('messenger');
+Route::get('/messagerie/{user}', 'MessageController@show')->name('messenger_show');
 
 //Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 

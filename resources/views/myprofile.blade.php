@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Profil')
+@section('title', 'Mon Profil')
 
 @section('content')
     <div id="cont_fiche_profil"></div>
@@ -31,7 +31,6 @@
                         @foreach($demands as $demand)
 
                             <li>{{$demand->user_id}}</li>
-                            <li>{{$demand-}}</li>
 
                         @endforeach
                     </ul>

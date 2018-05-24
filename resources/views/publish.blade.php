@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Publish')
+@section('title', 'Publier')
 
 @section('content')
     <div id="cont_fiche_profil"></div>

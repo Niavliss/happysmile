@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Paramètres')
+@section('title', 'Signaler un problème')
 
 @section('content')
 

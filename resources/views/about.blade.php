@@ -12,11 +12,11 @@
 
         <h3>Notre équipe</h3>
         <p class="p-1">Page en construction. Bientôt vous pourrez découvrir toute l'équipe d'HappySmile!</p>
-    </div>
+
 
     <a href="/">
         <button class="btn btn-warning btn-sm" id="retour-accueil">Retour à l'accueil</button>
     </a>
-
+    </div>
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 @endsection
