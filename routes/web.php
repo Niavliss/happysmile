@@ -42,6 +42,11 @@ Route::get('/a-propos', 'OurCompany@about')->name('about');
 Route::get('/faq', 'Support@faq')->name('faq');
 Route::get('/signaler-un-probleme', 'Support@reportanissue')->name('reportanissue');
 
+Route::get('/admin', 'Admin\AdminController@adminAccess')->name('admin_page');
+Route::get('/admin/users', 'Admin\AdminController@showUsers')->name('users_admin_page');
+Route::get('/admin/posts', 'Admin\AdminController@showPosts')->name('posts_admin_page');
+Route::get('/admin/commentaries', 'Admin\AdminController@showCommentaries')->name('commentaries_admin_page');
+Route::get('/admin/feedbacks', 'Admin\AdminController@showFeebacks')->name('feedbacks_admin_page');
 
 //TEST SETTINGS :
 Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
