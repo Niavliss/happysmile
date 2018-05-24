@@ -54,7 +54,7 @@
                                             class="card-link">{{$post->type_media}}</a></li>
                                 <li><span class="card-subtitle text-muted mb-2">Auteur :</span> <a
                                             href="
-                                             @if($user->id!=$post->user->id)
+                                             @if((isset($user)) && $user->id!=$post->user->id)
                                             {{ url('/profil/'.$post->user->id) }}
                                             @else
                                             {{ url('/mon-profil/') }}
