@@ -23,23 +23,6 @@
     </div>
     <div class="container" id="cont_body_profil">
         <div class="row">
-<<<<<<< HEAD
-            <div>
-                <h2> Mes amis </h2>
-
-                @if($demands->count() >0)
-                    <ul>
-                        @foreach($demands as $demand)
-
-                            <li>{{$demand->user_id}}</li>
-
-                        @endforeach
-                    </ul>
-                    @else
-                    coucou bordel de merde !
-                @endif
-
-=======
             <div class="col-4">
                 <h2> Mes Amis </h2>
                 <h5> Demandes :</h5>
@@ -66,7 +49,6 @@
                             le {{$friend->pivot->updated_at->format('d-m-Y')}} </li>
                     @endforeach
                 </ul>
->>>>>>> a5d22adc06ea828d8cbf51bb454f42a5216d28c9
             </div>
             <div class="col-8">
                 @foreach ($posts as $post)
