@@ -73,6 +73,28 @@ class User extends Authenticatable
         return $allfriends;
     }
 
+    public function isfriend($id)
+    {
+        $isfriend = 0;
+
+        $user = User::findOrFail($id);
+
+        $firsts = $this->friends;
+
+        $seconds = $this->friendsOn;
+
+        $allfriends =$firsts->merge($seconds);
+
+        foreach ($allfriends as $allfriend) {
+            if ($user->id === $allfriend->id)
+            {
+                $isfriend = 1;
+                return $isfriend;
+            }
+        }
+        return $isfriend;
+    }
+
 //
 //    public function allFriendsValid(){
 //        $first = DB::table('users')
