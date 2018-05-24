@@ -31,7 +31,6 @@
                         @foreach($demands as $demand)
 
                             <li>{{$demand->user_id}}</li>
-                            <li>{{$demand-}}</li>
 
                         @endforeach
                     </ul>
