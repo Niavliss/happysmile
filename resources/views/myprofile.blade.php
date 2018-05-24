@@ -23,22 +23,33 @@
     </div>
     <div class="container" id="cont_body_profil">
         <div class="row">
-            <div>
-                <h2> Mes amis </h2>
 
-                @if($demands->count() >0)
-                    <ul>
-                        @foreach($demands as $demand)
-
-                            <li>{{$demand->user_id}}</li>
-
-                        @endforeach
-                    </ul>
-                    @else
-                    coucou bordel de merde !
-                @endif
-
-            </div>
+            <div class="col-4">
+                <h2> Mes Amis </h2>
+                <h5> Demandes :</h5>
+                <ul class="list-unstyled ml-4">
+                    @foreach ($user->friendsOn as $friend)
+                        @if($friend->pivot->status =='0')
+                            <li> Voulez-vous être l'ami de {{$friend->pseudo}} ?
+                                <form method="POST" action="">
+                                    @csrf
+                                    <input type="hidden" name="target_user_id" value="{{$friend->id}}">
+                                    <button type="submit" class="btn btn-warning" name="answer" value="yes">oui
+                                    </button>
+                                    <button type="submit" class="btn btn-warning" name="answer" value="no">non
+                                    </button>
+                                </form>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+                <h5>Liste de mes amis</h5>
+                <ul class="ml-4">
+                    @foreach ($user->allFriendsValid() as $friend)
+                        <li> Vous êtes l'ami de {{$friend->pseudo}} depuis
+                            le {{$friend->pivot->updated_at->format('d-m-Y')}} </li>
+                    @endforeach
+                </ul>
             @foreach ($posts as $post)
                 <div class="col-12">
                     <div class="card txt">

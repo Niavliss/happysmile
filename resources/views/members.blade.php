@@ -15,7 +15,13 @@
                 @foreach($profils as $profil)
                     <div class="col-3">
                         <div class="card-body">
-                            <a href="{{ url('/profil/'.$profil->id) }}" class="badge badge-info">{{$profil->pseudo}}</a>
+                            <a href="
+                                @if($user->id!=$profil->id)
+                            {{ url('/profil/'.$profil->id) }}
+                            @else
+                                {{ url('/mon-profil/') }}
+                            @endif
+                            " class="badge badge-info">{{$profil->pseudo}}</a>
                             <p class="card-text">{{$profil->created_at}} </p>
                         </div>
                     </div>

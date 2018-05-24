@@ -53,7 +53,13 @@
                                             href="{{ url('categories/'.$post->type_media) }}"
                                             class="card-link">{{$post->type_media}}</a></li>
                                 <li><span class="card-subtitle text-muted mb-2">Auteur :</span> <a
-                                            href="{{ url('profil/'.$post->user->id) }}">{{$post->user->pseudo}}</a></li>
+                                            href="
+                                             @if($user->id!=$post->user->id)
+                                            {{ url('/profil/'.$post->user->id) }}
+                                            @else
+                                            {{ url('/mon-profil/') }}
+                                            @endif
+                                                    ">{{$post->user->pseudo}}</a></li>
                                 <li>
                                     <span class="card-subtitle text-muted mb-2">Date de création :</span> {{$post->created_at->format('d-m-Y')}}
                                 </li>

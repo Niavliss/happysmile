@@ -18,8 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('content');
-            $table->enum('type_media',['blague','image','video']);
+            $table->enum('type_media', ['blague','image','video']);
             $table->boolean('privacy')->default(0);
+            $table->enum('validation_status', [0,1,2]);
             $table->softDeletes();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

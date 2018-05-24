@@ -24,8 +24,11 @@ Route::get('/categories/commenter', 'CommentController@create')->name('front_com
 Route::get('/categories/commenter','CommentController@edit')->name('front_comment_edit');
 
 Route::get('/mon-profil', 'UserController@myprofile')->name('front_profile');
+
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show');
 Route::post('/profil/{id}', 'UserController@askfriend')->name('front_profile_friend');
+
+Route::post('/mon-profil', 'UserController@friendmanager')->name('front_profile_response');
 
 Route::get('/publier', 'PostController@create')->name('front_profile_publish');
 Route::post('/publier', 'PostController@store')->name('front_profile_store');
@@ -35,17 +38,26 @@ Route::post('/modification-mot-de-passe', 'UserController@uploadPassword')->name
 Route::post('/modification-email', 'UserController@uploadEmail')->name('upload_email');
 Route::get('/membres', 'UserController@members')->name('front_members');
 
-Route::get('/cgu', 'OurCompany@cgu')->name('cgu');
-Route::get('/politique-de-confidentialite', 'OurCompany@privacypolicy')->name('privacypolicy');
-Route::get('/a-propos', 'OurCompany@about')->name('about');
+Route::get('/cgu', 'OurCompanyController@cgu')->name('cgu');
+Route::get('/politique-de-confidentialite', 'OurCompanyController@privacypolicy')->name('privacypolicy');
+Route::get('/a-propos', 'OurCompanyController@about')->name('about');
 
-Route::get('/faq', 'Support@faq')->name('faq');
-Route::get('/signaler-un-probleme', 'Support@reportanissue')->name('reportanissue');
+Route::get('/faq', 'SupportController@faq')->name('faq');
+Route::get('/signaler-un-probleme', 'SupportController@reportanissue')->name('reportanissue');
 
+Route::get('/admin', 'Admin\AdminController@adminAccess')->name('admin_page');
+Route::get('/admin/users', 'Admin\AdminController@showUsers')->name('users_admin_page');
+Route::get('/admin/posts', 'Admin\AdminController@showPosts')->name('posts_admin_page');
+Route::get('/admin/commentaries', 'Admin\AdminController@showCommentaries')->name('commentaries_admin_page');
+Route::get('/admin/feedbacks', 'Admin\AdminController@showFeebacks')->name('feedbacks_admin_page');
 
 //TEST SETTINGS :
 Route::post('/modifier-mot-de-passe', 'UserController@uploadPassword')->name('upload_password');
 Route::post('/modifier-adresse-email', 'UserController@uploadEmail')->name('upload_email');
+
+//MESSAGERIE PRIVEE :
+Route::get('/messagerie', 'MessageController@index')->name('messenger');
+Route::get('/messagerie/{user}', 'MessageController@show')->name('messenger_show');
 
 //Route::get('/publier', 'UserController@publish')->name('front_profile_publish');
 

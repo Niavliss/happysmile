@@ -20,16 +20,17 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
-        $demands = DB::table('friends')->where('target_user_id', Auth::id())->get();
-//        dd($demands);
-        return view('myprofile', ['user' => $user, 'posts' => $posts, 'demands' => $demands]);
+
+        return view('myprofile', ['user' => $user, 'posts' => $posts]);
     }
 
     public function profile($id)
     {
         $user = User::findOrFail($id);
+        $friendexist = $user->isfriend(Auth::id());
         $posts = Post::where('privacy', 0)->orderBy('created_at', 'asc')->get();
-        return view('profile', ['user' => $user], ['posts' => $posts]);
+
+        return view('profile', ['user' => $user,'posts' => $posts, 'friendexist'=> $friendexist]);
     }
 
     public function settings()
@@ -40,8 +41,9 @@ class UserController extends Controller
 
     public function members()
     {
+        $user = Auth::user();
         $profils = User::orderBy('created_at', 'asc')->take(16)->get();
-        return view('members', ['profils' => $profils]);
+        return view('members', ['profils' => $profils,'user' => $user]);
     }
 
     public function publish(Request $request)
@@ -56,17 +58,6 @@ class UserController extends Controller
 
         return view('publish');
     }
-//
-//    public function publish(Request $request)
-//    {
-//        return Post::create([
-//            'title' => $request->input(),
-//            'content' => $request['content'],
-//            'privacy' => $request['privacy'],
-//        ]);
-//
-//        $post = new Post()
-//    }
 
     public function uploadImg(Request $request)
     {
@@ -89,7 +80,7 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        if (! Hash::check($request->input('password'), $user->password)) {
+        if (!Hash::check($request->input('password'), $user->password)) {
             return back()
                 ->withErrors(['password' => 'Mot de passe actuel invalide'])
                 ->withInput();
@@ -108,9 +99,29 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function askFriend($id) {
+    public function askFriend($id)
+    {
         $user = Auth::user();
-        $user->hasHappyFriend()->attach($id);
+        $user->friends()->attach($id);
         return back();
+    }
+
+    public function friendManager(Request $request)
+    {
+        $answer = $request->request->get('answer');
+        $target_user_id = $request->request->get('target_user_id');
+        $happyfriends = DB::table('friends')->where('user_id', '=', $target_user_id)
+            ->where('target_user_id', '=', Auth::id());
+//        dd($happyfriends);
+        if ($answer === "yes") {
+            $happyfriends->update(['status' => "1"]);
+
+            return back();
+        } elseif ($answer === "no") {
+
+            $happyfriends->update(['status' => "2"]);
+
+            return back();
+        }
     }
 }
