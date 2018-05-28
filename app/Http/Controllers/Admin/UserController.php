@@ -83,6 +83,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user_id=$user->id;
+        $user=User::withCount('posts')->findOrFail($user_id);
         return view('admin.user.show', ['user'=>$user]);
     }
 
@@ -133,11 +135,14 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     *
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back();
     }
 }

@@ -57,6 +57,17 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{user}', 'Admin\UserController@edit')->name('admin.user.edit');
         Route::put('/edit/{user}', 'Admin\UserController@update')->name('admin.user.update');
         Route::get('/{user}', 'Admin\UserController@show')->name('admin.user.show');
+        Route::get('/delete/{user}', 'Admin\UserController@destroy')->name('admin.user.destroy');
+    });
+
+    Route::prefix('post')->group(function () {
+        Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
+        Route::get('/create', 'Admin\PostController@create')->name('admin.post.create');
+        Route::post('/create', 'Admin\PostController@store')->name('admin.post.store');
+        Route::get('/edit/{post}', 'Admin\PostController@edit')->name('admin.post.edit');
+        Route::put('/edit/{post}', 'Admin\PostController@update')->name('admin.post.update');
+        Route::get('/{post}', 'Admin\PostController@show')->name('admin.post.show');
+        Route::get('/delete/{post}', 'Admin\PostController@destroy')->name('admin.post.destroy');
     });
 
 //    Route::get('/', 'Admin\AdminController@adminAccess')->name('admin_page');

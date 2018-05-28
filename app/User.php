@@ -13,6 +13,7 @@ class User extends Authenticatable
     use Notifiable;
 
     use HasApiTokens, Notifiable;
+    use SoftDeletes;
 
 
     /**

@@ -10,8 +10,8 @@
 <header style="text-align: center; background-color: white; margin-bottom: 10px;">
     <a href="{{ route('admin.index') }}" style="text-decoration: none;"><h1>Administrator</h1></a>
     <ul class="list-unstyled list-inline">
-        <li class="list-inline-item"><a href="{{ url('/') }}">Users</a></li>
-        {{--<li class="list-inline-item"><a href="{{ route('admin.user.index') }}">Posts</a></li>--}}
+        <li class="list-inline-item"><a href="{{ route('admin.user.index')}}">Users</a></li>
+        <li class="list-inline-item"><a href="{{ route('admin.post.index') }}">Posts</a></li>
         {{--<li class="list-inline-item"><a href="{{ route('admin.user.index') }}">Commentaries</a></li>--}}
         {{--<li class="list-inline-item"><a href="{{ route('admin.user.index') }}">Feedbacks</a></li>--}}
     </ul>
