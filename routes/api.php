@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +17,15 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('post', 'Api\PostController@index');
+Route::get('post/{post}', 'Api\PostController@show');
+
+
+Route::middleware('auth:api')->group(function() {
+    Route::post('post', 'Api\PostController@store');
+    Route::put('post/{post}', 'Api\PostController@update');
+    Route::delete('post/{post}', 'Api\PostController@delete');
 });

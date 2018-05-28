@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card p-2">
-                    <form action="{{ url('categories/publier') }}" method="POST">
+                    <form action="{{ route('front_categories_publish') }}" method="POST">
                         {{ csrf_field() }}
                         <h4 class="card-title">Faîtes-nous rire :</h4>
                         <div class="form-row">
