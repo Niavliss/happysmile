@@ -14,7 +14,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('comments.user')->latest()->orderBy('title','desc')->get();
+
+        return view('categories', ['posts' => $posts]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('publishcomment');
     }
 
     /**
@@ -35,7 +37,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'content' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('front_comment_publish')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $id = Auth::id();
+        $inputs = $request->all();
+        $inputs['content'] = $content;
+        Post::create($inputs);
+        return redirect('post');
     }
 
     /**
@@ -46,7 +62,10 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        $user = Auth::user();
+        $post = Post::findOrFail($id);
+
+        return view('post', ['comments.post' => $post, 'user' => $user]);
     }
 
     /**
@@ -57,7 +76,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('categories/publier', compact('comment'));
     }
 
     /**

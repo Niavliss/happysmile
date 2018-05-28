@@ -23,6 +23,9 @@ Route::get('/post/{post}/editer','PostController@edit')->name('front_post_edit')
 Route::get('/post/{id}/supprimer','PostController@softDelete')->name('front_post_delete');
 Route::put('/post/{post}','PostController@update')->name('front_post_update');
 
+Route::get('/categories/commenter', 'CommentController@create')->name('front_comment_publish');
+Route::get('/categories/commenter','CommentController@edit')->name('front_comment_edit');
+
 Route::get('/mon-profil', 'UserController@myprofile')->name('front_profile');
 
 Route::get('/profil/{id}', 'UserController@profile')->name('front_profile_show');

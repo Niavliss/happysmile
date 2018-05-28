@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Mon Profil')
+@section('title', 'Profil')
 
 @section('content')
     <div id="cont_fiche_profil"></div>
@@ -23,6 +23,7 @@
     </div>
     <div class="container" id="cont_body_profil">
         <div class="row">
+
             <div class="col-4">
                 <h2> Mes Amis </h2>
                 <h5> Demandes :</h5>
@@ -49,26 +50,24 @@
                             le {{$friend->pivot->updated_at->format('d-m-Y')}} </li>
                     @endforeach
                 </ul>
-            </div>
-            <div class="col-8">
-                @foreach ($posts as $post)
-                    <div class="col-12">
-                        <div class="card txt">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$post->title}}</h5>
-                                <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
-                                <p class="card-text content">{{ $post->content }} </p>
-                            </div>
-                        </div>
-                        <div class="bottompost">
-                            <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
-                            <span class="numbers"> </span>
-                            <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
-                            <span class="numbers"> </span>
+            @foreach ($posts as $post)
+                <div class="col-12">
+                    <div class="card txt">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$post->title}}</h5>
+                            <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
+                            <p class="card-text content">{{ $post->content }} </p>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                    <div class="bottompost">
+                        <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
+                        <span class="numbers"> </span>
+                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
+                        <span class="numbers"> </span>
+                    </div>
+                </div>
+
+            @endforeach
         </div>
     </div>
 @endsection
