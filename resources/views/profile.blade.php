@@ -16,21 +16,28 @@
                 </form>
             </li>
             @endif
-        </ul>
     </div>
     <div class="container" id="cont_body_profil">
         <div class="row">
+            <div class="col-8">
             @foreach ($posts as $post)
-                <div class="col-12">
+                <div class="col-12 mb-2">
                     <div class="card txt">
                         <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
-                            <p class="card-text">{{$post->content}} </p>
+                            <a href="{{ route('front_post', ['id'=>$post->id]) }}"><h4 class="card-title">{{$post->title}}</h4></a>
+                            <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
+                            <p class="card-text content">{{ $post->content }} </p>
                         </div>
                     </div>
+                    <div class="bottompost">
+                        <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
+                        <span class="numbers"> </span>
+                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
+                        <span class="numbers"> </span>
+                    </div>
                 </div>
-            {{--@else--}}
             @endforeach
+            </div>
         </div>
     </div>
 @endsection

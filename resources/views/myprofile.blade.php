@@ -25,7 +25,7 @@
         <div class="row">
 
             <div class="col-4">
-                <h2> Mes Amis </h2>
+                <h3> Mes Amis </h3>
                 <h5> Demandes :</h5>
                 <ul class="list-unstyled ml-4">
                     @foreach ($user->friendsOn as $friend)
@@ -50,24 +50,26 @@
                             le {{$friend->pivot->updated_at->format('d-m-Y')}} </li>
                     @endforeach
                 </ul>
-            @foreach ($posts as $post)
-                <div class="col-12">
-                    <div class="card txt">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
-                            <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
-                            <p class="card-text content">{{ $post->content }} </p>
+            </div>
+            <div class="col-8">
+                <h3>Mes publications</h3>
+                @foreach ($posts as $post)
+                    <div class="col-12 mb-2">
+                        <div class="card txt">
+                            <div class="card-body">
+                                <a href="{{ route('front_post', ['id'=>$post->id]) }}"><h4 class="card-title">{{$post->title}}</h4></a>
+                                <span class="card-subtitle hour text-muted mb-2"></span> {{$post->created_at->format('d-m-Y H:i:s')}}
+                                <p class="card-text content">{{ $post->content }} </p>
+                            </div>
+                        </div>
+                        <div class="bottompost">
+                            <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
+                            <span class="numbers"> </span>
+                            <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
+                            <span class="numbers"> </span>
                         </div>
                     </div>
-                    <div class="bottompost">
-                        <img class="icon-like" src="{{URL::asset('img/lemonlike.png')}}" alt="lemonlike">
-                        <span class="numbers"> </span>
-                        <img class="icon-com" src="{{URL::asset('img/comment.png')}}" alt="commentaire">
-                        <span class="numbers"> </span>
-                    </div>
-                </div>
-
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
 @endsection

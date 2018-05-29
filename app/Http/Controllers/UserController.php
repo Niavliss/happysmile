@@ -19,7 +19,8 @@ class UserController extends Controller
     public function myprofile()
     {
         $user = Auth::user();
-        $posts = Post::where('privacy', 1)->orderBy('created_at', 'asc')->get();
+        $user_id = Auth::id();
+        $posts = Post::where('user_id', $user_id)->orderBy('created_at', 'asc')->get();
 
         return view('myprofile', ['user' => $user, 'posts' => $posts]);
     }
@@ -28,7 +29,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $friendexist = $user->isfriend(Auth::id());
-        $posts = Post::where('privacy', 0)->orderBy('created_at', 'asc')->get();
+        $posts = Post::where('privacy', 0)->where('user_id',$id)->orderBy('created_at', 'asc')->get();
 
         return view('profile', ['user' => $user,'posts' => $posts, 'friendexist'=> $friendexist]);
     }
