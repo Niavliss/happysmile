@@ -17,14 +17,12 @@ Route::post('/categories/publier', 'PostController@store')->name('front_categori
 Route::get('/categories/{typemedia}', 'PostController@sortByTypeMedia')->name('front_typemedia');
 
 
-
-
-Route::get('/post/{post}/editer','PostController@edit')->name('front_post_edit');
-Route::get('/post/{id}/supprimer','PostController@softDelete')->name('front_post_delete');
-Route::put('/post/{post}','PostController@update')->name('front_post_update');
+Route::get('/post/{post}/editer', 'PostController@edit')->name('front_post_edit');
+Route::get('/post/{id}/supprimer', 'PostController@softDelete')->name('front_post_delete');
+Route::put('/post/{post}', 'PostController@update')->name('front_post_update');
 
 Route::get('/categories/commenter', 'CommentController@create')->name('front_comment_publish');
-Route::get('/categories/commenter','CommentController@edit')->name('front_comment_edit');
+Route::get('/categories/commenter', 'CommentController@edit')->name('front_comment_edit');
 
 Route::get('/mon-profil', 'UserController@myprofile')->name('front_profile');
 
@@ -55,26 +53,29 @@ Route::get('/messagerie', 'MessageController@index')->name('messenger');
 Route::get('/messagerie/{user}', 'MessageController@show')->name('messenger_show');
 
 //ADMIN PAGE
-Route::prefix('admin')->group(function () {
-        Route::get('/', 'Admin\AdminController@index')->name('admin.index');
-    Route::prefix('user')->group(function () {
-        Route::get('/', 'Admin\UserController@index')->name('admin.user.index');
-        Route::get('/create', 'Admin\UserController@create')->name('admin.user.create');
-        Route::post('/create', 'Admin\UserController@store')->name('admin.user.store');
-        Route::get('/edit/{user}', 'Admin\UserController@edit')->name('admin.user.edit');
-        Route::put('/edit/{user}', 'Admin\UserController@update')->name('admin.user.update');
-        Route::get('/{user}', 'Admin\UserController@show')->name('admin.user.show');
-        Route::get('/delete/{user}', 'Admin\UserController@destroy')->name('admin.user.destroy');
-    });
 
-    Route::prefix('post')->group(function () {
-        Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
-        Route::get('/create', 'Admin\PostController@create')->name('admin.post.create');
-        Route::post('/create', 'Admin\PostController@store')->name('admin.post.store');
-        Route::get('/edit/{post}', 'Admin\PostController@edit')->name('admin.post.edit');
-        Route::put('/edit/{post}', 'Admin\PostController@update')->name('admin.post.update');
-        Route::get('/{post}', 'Admin\PostController@show')->name('admin.post.show');
-        Route::get('/delete/{post}', 'Admin\PostController@destroy')->name('admin.post.destroy');
+Route::middleware('admin')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+        Route::prefix('user')->group(function () {
+            Route::get('/', 'Admin\UserController@index')->name('admin.user.index');
+            Route::get('/create', 'Admin\UserController@create')->name('admin.user.create');
+            Route::post('/create', 'Admin\UserController@store')->name('admin.user.store');
+            Route::get('/edit/{user}', 'Admin\UserController@edit')->name('admin.user.edit');
+            Route::put('/edit/{user}', 'Admin\UserController@update')->name('admin.user.update');
+            Route::get('/{user}', 'Admin\UserController@show')->name('admin.user.show');
+            Route::get('/delete/{user}', 'Admin\UserController@destroy')->name('admin.user.destroy');
+        });
+
+        Route::prefix('post')->group(function () {
+            Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
+            Route::get('/create', 'Admin\PostController@create')->name('admin.post.create');
+            Route::post('/create', 'Admin\PostController@store')->name('admin.post.store');
+            Route::get('/edit/{post}', 'Admin\PostController@edit')->name('admin.post.edit');
+            Route::put('/edit/{post}', 'Admin\PostController@update')->name('admin.post.update');
+            Route::get('/{post}', 'Admin\PostController@show')->name('admin.post.show');
+            Route::get('/delete/{post}', 'Admin\PostController@destroy')->name('admin.post.destroy');
+        });
+
     });
 });
-

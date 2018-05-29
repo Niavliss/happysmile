@@ -15,15 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        if ($user->grouptype==2) {
             return view('admin.index');
-        }
-        else
-        {
-            return redirect('/');
-        }
     }
 
     /**
