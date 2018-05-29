@@ -3,13 +3,13 @@
 @section('title', 'Administrator - Posts List')
 
 @section('content')
-    <div class="row">
+    <div class="row  btn-admin-create">
         <a href="{{ route('admin.post.create')}}"><button class="btn btn btn-warning">Créer un post</button></a>
     </div>
     <div class="row"
          style="border-radius: 3px; background-color: white; margin: auto; width: 95%; height: 100%; text-align: center;">
         <div class="col-xl-12">
-            <table>
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>#ID</th>

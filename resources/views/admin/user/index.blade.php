@@ -3,14 +3,15 @@
 @section('title', 'Administrator - Users List')
 
 @section('content')
-    <div class="row">
+    <div class="row  btn-admin-create">
         <a href="{{ route('admin.user.create')}}"><button class="btn btn btn-warning">Créer un utilisateur</button></a>
     </div>
+    <div class="container-fluid">
     <div class="row"
          style="border-radius: 3px; background-color: white; margin: auto; width: 95%; height: 100%; text-align: center;">
 
         <div class="col-xl-12">
-            <table>
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>#ID</th>
@@ -41,5 +42,6 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 @endsection

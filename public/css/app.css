@@ -10757,3 +10757,12 @@ a:hover {
   margin-bottom: 15px;
 }
 
+/* PAGE ADMIN */
+
+.btn-admin-create {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1%;
+}
+
